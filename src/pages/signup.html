@@ -9,10 +9,58 @@
   <body>
     <div class="container">
       <h1 class="a11y-hidden">Shall We Trip?</h1>
-      <main>
-        <h2>페이지 별 heading은 h2부터 넣어주세요.</h2>
+      <main class="sign sign-in">
+        <h2 class="sign__title">Sign up</h2>
+        <form action="/" method="post">
+          <fieldset>
+            <legend class="a11y-hidden">로그인 정보 입력</legend>
+            <div class="input__wrap">
+              <label for="userName">이름</label>
+              <input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요." />
+              <p class="input--error">이메일 형식에 맞게 입력해주세요.</p>
+            </div>
+            <div class="input__wrap">
+              <label for="phoneNumber">핸드폰번호</label>
+              <input type="text" id="phoneNumber" name="phoneNumber" placeholder="'-' 없이 숫자만 입력해주세요." />
+              <p class="input--error">'-' 없이 숫자만 입력해주세요.</p>
+            </div>
+            <div class="input__wrap">
+              <label for="nickname">닉네임</label>
+              <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요." />
+              <p class="input--error">영문 혹은 한글을 1~6자로 입력해주세요.</p>
+            </div>
+            <div class="input__wrap">
+              <label for="userEmail">이메일</label>
+              <p class="input__box">
+                <input type="text" id="userEmail" name="userEmail" placeholder="shallwetrip@shallwetrip.com" />
+                <button type="button" class="input__box--check">중복 체크</button>
+              </p>
+              <p class="input--error">이메일 형식에 맞게 입력해주세요.</p>
+            </div>
+            <div class="input__wrap">
+              <label for="password">비밀번호</label>
+              <input
+                type="password"
+                id="password"
+                name="userPassword"
+                placeholder="영문 또는 숫자를 6~12자로 입력해주세요."
+              />
+              <p class="input--error">영문 또는 숫자를 6~12자로 입력해주세요.</p>
+            </div>
+            <div class="input__wrap">
+              <label for="confirmPassword">비밀번호 확인</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="비밀번호를 한번 더 입력해주세요."
+              />
+              <p class="input--error">비밀번호가 일치하지 않습니다.</p>
+            </div>
+            <button type="submit" class="sign--submit">가입하기</button>
+          </fieldset>
+        </form>
       </main>
-      <nav>common component 삽입 예정</nav>
     </div>
   </body>
 </html>
