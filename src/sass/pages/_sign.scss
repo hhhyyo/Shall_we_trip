@@ -1,1 +1,107 @@
 @use '../base/' as *;
+
+.sign {
+  padding: rem(40px) rem(25px);
+  border-radius: rem(50px);
+  background: $white;
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: rem(58px);
+    text-align: center;
+    margin-bottom: rem(28px);
+  }
+
+  .input {
+    &__wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: rem(60px);
+
+      label {
+        padding-left: rem(14px);
+        margin-bottom: rem(16px);
+        font-size: rem(20px);
+      }
+
+      input {
+        border: 0;
+        background: $light-gray;
+        padding: rem(10px) rem(14px);
+        border-radius: rem(10px);
+        font-size: rem(20px);
+        &::placeholder {
+          font-size: rem(20px);
+        }
+      }
+    }
+
+    &__box {
+      position: relative;
+
+      input {
+        width: 100%;
+        padding-right: rem(116px);
+      }
+
+      &--check {
+        position: absolute;
+        top: 50%;
+        right: rem(14px);
+        transform: translateY(-50%);
+        padding: rem(5px) rem(10px);
+        border: 0;
+        border-radius: rem(6px);
+        background: #ddd;
+        color: #777;
+
+        &.active {
+          color: $white;
+          background: $navy;
+        }
+      }
+    }
+
+    &--error {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: rem(10px);
+      padding-left: rem(14px);
+      color: $pink;
+      font-weight: 500;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  &--submit {
+    display: block;
+    width: 100%;
+    padding: rem(16px) 0;
+    background: $navy;
+    font-size: rem(20px);
+    font-weight: 700;
+    color: $white;
+    text-align: center;
+    border: 0;
+    border-radius: rem(10px);
+  }
+
+  &--link {
+    margin-top: rem(20px);
+    text-align: center;
+    a {
+      display: inline-block;
+      padding: rem(10px);
+      font-size: rem(20px);
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+}
