@@ -6,7 +6,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: rem(60px);
 
     label {
       padding-left: rem(14px);
@@ -17,7 +16,7 @@
     input {
       border: 0;
       background: $light-gray;
-      padding: rem(10px) rem(14px);
+      padding: rem(16px) rem(14px);
       border-radius: rem(10px);
       font-size: rem(20px);
       &::placeholder {
