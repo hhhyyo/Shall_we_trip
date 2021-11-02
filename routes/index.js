@@ -1,8 +1,10 @@
 const express = require('express');
-const expense = require('./expense');
+const trips = require('./trips');
+const expenses = require('./expenses');
 
 const router = express.Router();
 
-router.use('/expense', expense);
+router.use('/trips', trips);
+router.use('/expenses', expenses);
 
 module.exports = router;
