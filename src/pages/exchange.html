@@ -4,13 +4,112 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shall We Trip?</title>
+    <title>환율 계산기</title>
   </head>
   <body>
     <div class="container">
       <h1 class="a11y-hidden">Shall We Trip?</h1>
-      <main>
-        <h2>페이지 별 heading은 h2부터 넣어주세요.</h2>
+      <main class="exchange">
+        <h2 class="exchange__header">환율 계산기</h2>
+        <div class="exchange__section">
+          <!-- before -->
+          <div class="exchange__section--before">
+            <div class="exchange__section--before--country">
+              <input class="exchange__input exchange__section--before--countryinput" type="text" value="미국 USD" />
+              <!-- <label for="before" class="a11y-hidden">바꿀 화폐를 선택해주세요</label>
+              <select name="before__country" id="before">
+                <option value="미국" selected>미국 USD</option>
+                <option value="일본">일본 JPY</option>
+              </select> -->
+            </div>
+            <div class="exchange__section--before--moneywrap">
+              <div class="exchange__section--before--money">
+                <input class="exchange__input exchange__section--before--moneyinput" type="number" value="1" />
+              </div>
+              <div class="exchange__section--before--unit">달러</div>
+            </div>
+          </div>
+          <!-- brfore end -->
+          <div class="exchange__icon">
+            <i class="exchange__icon--arrow bx bx-arrow-from-top"></i>
+          </div>
+          <!-- after -->
+          <div class="exchange__section--after">
+            <div class="exchange__section--after--country">
+              <input class="exchange__input exchange__section--after--countryinput" type="text" value="대한민국 KRW" />
+              <!-- <label for="before" class="a11y-hidden">바꿀 화폐를 선택해주세요</label>
+              <select name="before__country" id="before">
+                <option value="대한민국" selected>대한민국 KRW</option>
+                <option value="일본">일본 JPY</option>
+              </select> -->
+            </div>
+            <div class="exchange__section--after--moneywrap">
+              <div class="exchange__section--after--money">1,171.00</div>
+              <div class="exchange__section--after--unit">원</div>
+            </div>
+          </div>
+          <!-- after end -->
+        </div>
+        <div class="exchange__hotplace">
+          <ul class="exchange__hotplace--itemwrap">
+            <li class="exchange__hotplace--item1 exchange__hotplace--item">
+              <div class="exchange__hotplace--detail--wrap">
+                <p class="exchange__hotplace--detail--country">미국 USD</p>
+                <p class="exchange__hotplace--detail--money">1,174.00</p>
+                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.30%</p>
+              </div>
+            </li>
+            <li class="exchange__hotplace--item2 exchange__hotplace--item">
+              <div class="exchange__hotplace--detail--wrap">
+                <p class="exchange__hotplace--detail--country">일본 JPY</p>
+                <p class="exchange__hotplace--detail--money">1,029.69</p>
+                <p class="exchange__hotplace--detail--ratio exchange__ratio--blue">-0.10%</p>
+              </div>
+            </li>
+            <li class="exchange__hotplace--item3 exchange__hotplace--item">
+              <div class="exchange__hotplace--detail--wrap">
+                <p class="exchange__hotplace--detail--country">유럽연합 EUR</p>
+                <p class="exchange__hotplace--detail--money">1,357.50</p>
+                <p class="exchange__hotplace--detail--ratio exchange__ratio--blue">-0.07%</p>
+              </div>
+            </li>
+            <li class="exchange__hotplace--item4 exchange__hotplace--item">
+              <div class="exchange__hotplace--detail--wrap">
+                <p class="exchange__hotplace--detail--country">중국 CNY</p>
+                <p class="exchange__hotplace--detail--money">183.35</p>
+                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.17%</p>
+              </div>
+            </li>
+            <li class="exchange__hotplace--item5 exchange__hotplace--item">
+              <div class="exchange__hotplace--detail--wrap">
+                <p class="exchange__hotplace--detail--country">영국 GBP</p>
+                <p class="exchange__hotplace--detail--money">1,606.33</p>
+                <p class="exchange__hotplace--detail--ratio exchange__ratio--blue">-0.28%</p>
+              </div>
+            </li>
+            <li class="exchange__hotplace--item6 exchange__hotplace--item">
+              <div class="exchange__hotplace--detail--wrap">
+                <p class="exchange__hotplace--detail--country">호주 AUD</p>
+                <p class="exchange__hotplace--detail--money">883.08</p>
+                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.26%</p>
+              </div>
+            </li>
+            <li class="exchange__hotplace--item7 exchange__hotplace--item">
+              <div class="exchange__hotplace--detail--wrap">
+                <p class="exchange__hotplace--detail--country">캐나다 CAD</p>
+                <p class="exchange__hotplace--detail--money">947.23</p>
+                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.04%</p>
+              </div>
+            </li>
+            <li class="exchange__hotplace--item8 exchange__hotplace--item">
+              <div class="exchange__hotplace--detail--wrap">
+                <p class="exchange__hotplace--detail--country">뉴질랜드 NZD</p>
+                <p class="exchange__hotplace--detail--money">841.29</p>
+                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.09%</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </main>
       <nav>common component 삽입 예정</nav>
     </div>
