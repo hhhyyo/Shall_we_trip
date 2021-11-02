@@ -9,8 +9,82 @@
   <body>
     <div class="container">
       <h1 class="a11y-hidden">Shall We Trip?</h1>
-      <main>
-        <h2>페이지 별 heading은 h2부터 넣어주세요.</h2>
+      <main class="expense-main">
+        <div class="trip">
+          <h2 class="trip__title">미국 살고 오기!! 그랜드캐니언 가기</h2>
+          <button class="trip__button"><i class="bx bxs-edit"></i></button>
+          <span class="trip__period">2021.10.01~2021.10.31</span>
+        </div>
+        <div class="area budget">
+          <div class="budget__total">
+            <span class="budget__total-text">총 예산</span>
+            <b class="budget__total-cost">300 달러</b>
+          </div>
+          <div class="budget__rest">
+            <span class="budget__rest-text">남은 예산</span>
+            <b class="budget__rest-cost">300 달러</b>
+          </div>
+          <button class="budget__button"><i class="bx bxs-edit"></i></button>
+        </div>
+        <div class="area expense">
+          <div class="expense__total">
+            <span class="expense__total-text">총 지출</span>
+            <b class="expense__total-cost">150 달러</b>
+          </div>
+          <div class="expense__cash">
+            <span class="expense__cash-text">현금 지출</span>
+            <b class="expense__cash-cost">50 달러</b>
+          </div>
+          <div class="expense__card">
+            <span class="expense__card-text">카드 지출</span>
+            <b class="expense__card-cost">100 달러</b>
+          </div>
+        </div>
+        <ul class="category">
+          <li class="category__item category__all">
+            <button class="category__button category__button--selected">All</button>
+          </li>
+          <li class="category__item category__meal">
+            <button class="category__button">식비</button>
+          </li>
+          <li class="category__item category__shopping">
+            <button class="category__button">쇼핑</button>
+          </li>
+          <li class="category__item category__tour">
+            <button class="category__button">관광</button>
+          </li>
+          <li class="category__item category__traffic">
+            <button class="category__button">교통</button>
+          </li>
+          <li class="category__item category__accommodation">
+            <button class="category__button">숙박</button>
+          </li>
+          <li class="category__item category__etc">
+            <button class="category__button">기타</button>
+          </li>
+        </ul>
+        <ul class="expense__list">
+          <li class="area expense__item accommodation">
+            <div class="expense__info">
+              <h3 class="expense__title">구찌백</h3>
+              <span class="expense__date">10/31 1:18</span>
+            </div>
+            <div class="expense__detail">
+              <b class="expense__cost">-50 달러</b>
+              <span class="expense__payment-method">현금</span>
+            </div>
+          </li>
+          <li class="area expense__item etc">
+            <div class="expense__info">
+              <h3 class="expense__title">밀크쉐이크, 감튀</h3>
+              <span class="expense__date">10/31 1:18</span>
+            </div>
+            <div class="expense__detail">
+              <b class="expense__cost">-24 달러</b>
+              <span class="expense__payment-method">카드</span>
+            </div>
+          </li>
+        </ul>
       </main>
       <nav>common component 삽입 예정</nav>
     </div>
