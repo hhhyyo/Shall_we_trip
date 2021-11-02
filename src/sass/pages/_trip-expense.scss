@@ -1,1 +1,237 @@
 @use '../base/' as *;
+
+.expense-main {
+  .area {
+    padding: rem(16) rem(48);
+    margin: rem(22) 0;
+    border-radius: rem(27);
+    background-color: $white;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .trip {
+    margin: rem(64) 0;
+    padding: 0 rem(32);
+    color: $white;
+
+    &__title {
+      display: inline-block;
+      line-height: 1.4;
+      font-size: rem(32);
+      font-weight: 500;
+
+      @include mobile {
+        font-size: rem(22);
+      }
+    }
+
+    &__button {
+      color: $black;
+      font-size: rem(25);
+      border: none;
+      background-color: transparent;
+
+      @include mobile {
+        font-size: rem(20);
+      }
+    }
+
+    &__period {
+      display: block;
+      margin-top: rem(10);
+      font-size: rem(18);
+      font-weight: 100;
+      letter-spacing: rem(2);
+
+      @include mobile {
+        font-size: rem(14);
+      }
+    }
+  }
+
+  .budget {
+    position: relative;
+
+    &__total,
+    &__rest {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: rem(16) 0;
+    }
+
+    &__total-text,
+    &__rest-text {
+      font-size: rem(20);
+      font-weight: 200;
+    }
+
+    &__total-cost,
+    &__rest-cost {
+      display: inline-block;
+      width: rem(112);
+      font-size: rem(20);
+      font-weight: 500;
+    }
+
+    &__button {
+      color: $black;
+      font-size: rem(25);
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      right: rem(32);
+      top: rem(32);
+    }
+  }
+
+  .expense {
+    display: flex;
+    justify-content: space-between;
+
+    &__total,
+    &__cash,
+    &__card {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+
+    &__total-text,
+    &__cash-text,
+    &__card-text {
+      font-size: rem(20);
+      font-weight: 200;
+      margin: rem(32) 0 rem(16);
+    }
+
+    &__total-cost,
+    &__cash-cost,
+    &__card-cost {
+      font-size: rem(20);
+      font-weight: 500;
+      margin: rem(16) 0 rem(32);
+    }
+
+    &__list {
+      position: relative;
+    }
+
+    &__item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      padding-left: rem(150);
+
+      @include mobile {
+        padding-left: rem(120);
+      }
+    }
+
+    &__item:before {
+      $image-size: 60;
+      content: '';
+      position: absolute;
+      left: rem(40);
+      top: 50%;
+      transform: translateY(-50%);
+      width: rem($image-size);
+      height: rem($image-size);
+      background-image: url(../assets/images/category.png);
+      background-repeat: no-repeat;
+      background-size: auto rem($image-size);
+
+      @include mobile {
+        left: rem(30);
+      }
+    }
+
+    &__item.shopping:before {
+      background-position-x: rem(-66.6);
+    }
+    &__item.tour:before {
+      background-position-x: rem(-133.2);
+    }
+    &__item.traffic:before {
+      background-position-x: rem(-200);
+    }
+    &__item.accommodation:before {
+      background-position-x: rem(-266.4);
+    }
+    &__item.etc:before {
+      background-position-x: rem(-333);
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__detail {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      margin-left: rem(40);
+      flex-shrink: 0;
+      row-gap: rem(8);
+
+      @include mobile {
+        margin-left: rem(20);
+      }
+    }
+
+    &__title {
+      font-size: rem(20);
+      font-weight: 600;
+      line-height: 1.4;
+      margin: rem(16) 0 rem(4);
+      word-break: break-all;
+    }
+
+    &__date {
+      margin: rem(4) 0 rem(16);
+      word-spacing: rem(12);
+    }
+
+    &__cost {
+      color: $pink;
+      font-size: rem(22);
+      font-weight: 700;
+    }
+
+    &__payment-method {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: rem(50);
+      height: rem(25);
+      border-radius: rem(5);
+      background-color: $navy;
+      color: $white;
+    }
+  }
+
+  .category {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin: rem(48) 0;
+    padding: 0 rem(32);
+
+    &__item {
+      font-size: rem(19);
+    }
+
+    &__button {
+      padding: rem(8);
+      border: none;
+      background-color: transparent;
+
+      &--selected {
+        font-weight: 700;
+        border-bottom: rem(3) solid $black;
+      }
+    }
+  }
+}

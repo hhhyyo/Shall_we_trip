@@ -1,0 +1,47 @@
+@use '../base/' as *;
+
+// input style
+.input-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: rem(20px);
+
+  label {
+    padding-left: rem(14px);
+    margin-bottom: rem(16px);
+    font-size: inherit;
+  }
+
+  input {
+    border: 0;
+    background: $light-gray;
+    padding: rem(16px) rem(14px);
+    border-radius: rem(10px);
+    font-size: inherit;
+    &::placeholder {
+      font-size: rem(20px);
+    }
+  }
+}
+
+.button {
+  &--submit {
+    display: block;
+    width: 100%;
+    padding: rem(16px) 0;
+    background: $navy;
+    font-size: rem(20px);
+    font-weight: 700;
+    color: $white;
+    text-align: center;
+    border: 0;
+    border-radius: rem(10px);
+
+    &:disabled {
+      cursor: not-allowed;
+      background: #ddd;
+      color: #777;
+    }
+  }
+}

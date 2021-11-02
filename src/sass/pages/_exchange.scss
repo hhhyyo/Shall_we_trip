@@ -1,4 +1,176 @@
 @use '../base/' as *;
 
-.expense {
+.exchange {
+  &__header {
+    color: white;
+    font-weight: bold;
+    font-size: rem(32px);
+    padding: rem(32px) 0 rem(32px) rem(16px);
+    @include desktop {
+      font-size: rem(48px);
+    }
+  }
+
+  &__input {
+    font-size: rem(18px);
+    border: none;
+    background-color: $light-yellow;
+    @include desktop {
+      font-size: rem(24px);
+    }
+  }
+
+  &__section {
+    margin: 0 auto;
+    background-color: white;
+    position: relative;
+    border-radius: rem(24px);
+    padding: rem(12px);
+    box-shadow: 0 rem(10px) rem(40px) rem(5px) gray;
+
+    &--before,
+    &--after {
+      font-size: rem(18px);
+      @include desktop {
+        font-size: rem(24px);
+      }
+      &--country {
+        background-color: $light-yellow;
+        border-radius: rem(18px);
+        padding: rem(16px);
+        margin: rem(12px) rem(18px);
+      }
+      &--moneywrap {
+        display: flex;
+      }
+      &--money {
+        background-color: $light-yellow;
+        border-radius: rem(18px);
+        padding: rem(16px);
+        margin: rem(12px) rem(18px);
+        width: 80%;
+      }
+      &--unit {
+        width: 20%;
+        padding: rem(12px);
+        align-self: center;
+      }
+    }
+  }
+  &__icon {
+    text-align: center;
+    &--arrow {
+      margin: 0 auto;
+      font-size: rem(26px);
+      text-align: center;
+      @include desktop {
+        font-size: rem(36px);
+      }
+    }
+  }
+
+  &__hotplace {
+    padding: rem(24px);
+    margin-top: rem(360px);
+
+    &--itemwrap {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    &--item {
+      position: relative;
+      background-color: gray;
+      border-radius: rem(24px);
+      width: 40%;
+      height: rem(180px);
+      margin: rem(12px);
+      background: url(../assets/images/hotplace_sprites.png) no-repeat;
+      background-size: auto rem(303px);
+      background-size: cover;
+      @include desktop {
+        width: rem(240px);
+        height: rem(240px);
+        margin: rem(12px);
+      }
+    }
+    &--item1 {
+      background-position-x: 0;
+    }
+    &--item2 {
+      background-position-x: calc(100% / 7) * 1;
+    }
+    &--item3 {
+      background-position-x: calc(100% / 7) * 2;
+    }
+    &--item4 {
+      background-position-x: calc(100% / 7) * 3;
+    }
+    &--item5 {
+      background-position-x: calc(100% / 7) * 4;
+    }
+    &--item6 {
+      background-position-x: calc(100% / 7) * 5;
+    }
+    &--item7 {
+      background-position-x: calc(100% / 7) * 6;
+    }
+    &--item8 {
+      background-position-x: calc(100% / 7) * 7;
+    }
+
+    &--item::before {
+      content: '';
+      display: block;
+      background: rgba(255, 255, 255, 0.8);
+      height: 70%;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &--detail {
+      &--wrap {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &--country {
+        white-space: nowrap;
+        font-size: rem(16px);
+        @include desktop {
+          font-size: rem(26px);
+        }
+      }
+      &--money {
+        font-size: rem(24px);
+        margin-top: rem(8px);
+        @include desktop {
+          font-size: rem(36px);
+          margin-top: rem(12px);
+        }
+      }
+      &--ratio {
+        margin-top: rem(10px);
+        padding: rem(8px) rem(4px);
+        border-radius: rem(8px);
+        color: white;
+        @include desktop {
+          margin-top: rem(14px);
+          padding: rem(10px) rem(6px);
+          border-radius: rem(12px);
+          font-size: rem(24px);
+        }
+      }
+      &--ratio.exchange__ratio--red {
+        background: red;
+      }
+      &--ratio.exchange__ratio--blue {
+        background: blue;
+      }
+    }
+  }
 }

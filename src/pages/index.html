@@ -9,10 +9,33 @@
   <body>
     <div class="container">
       <h1 class="a11y-hidden">Shall We Trip?</h1>
-      <main>
-        <h2>페이지 별 heading은 h2부터 넣어주세요.</h2>
+      <main class="sign sign-in">
+        <h2 class="sign__title">Sign in</h2>
+        <form action="/" method="post">
+          <fieldset>
+            <legend class="a11y-hidden">로그인 정보 입력</legend>
+            <div class="input__wrap">
+              <label for="email">이메일</label>
+              <input type="text" id="email" name="userEmail" placeholder="shallwetrip@shallwetrip.com" />
+              <p class="input--error">이메일 형식에 맞게 입력해주세요.</p>
+            </div>
+            <div class="input__wrap">
+              <label for="password">비밀번호</label>
+              <input
+                type="password"
+                id="password"
+                name="userPassword"
+                placeholder="영문 또는 숫자를 6~12자로 입력해주세요."
+              />
+              <p class="input--error">영문 또는 숫자를 6~12자로 입력해주세요.</p>
+            </div>
+            <button type="submit" class="button--submit" disabled>로그인</button>
+          </fieldset>
+        </form>
+        <div class="sign--link">
+          <a href="signup/">회원가입</a>
+        </div>
       </main>
-      <nav>common component 삽입 예정</nav>
     </div>
   </body>
 </html>
