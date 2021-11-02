@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <h1 class="a11y-hidden">Shall We Trip?</h1>
-      <main class="sign sign-in">
+      <main class="sign sign-up">
         <h2 class="sign__title">Sign up</h2>
         <form action="/" method="post">
           <fieldset>
@@ -17,35 +17,35 @@
             <div class="input__wrap">
               <label for="userName">이름</label>
               <input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요." />
-              <p class="input--error">이메일 형식에 맞게 입력해주세요.</p>
+              <p class="input--error"></p>
             </div>
             <div class="input__wrap">
               <label for="phoneNumber">핸드폰번호</label>
               <input type="text" id="phoneNumber" name="phoneNumber" placeholder="'-' 없이 숫자만 입력해주세요." />
-              <p class="input--error">'-' 없이 숫자만 입력해주세요.</p>
+              <p class="input--error"></p>
             </div>
             <div class="input__wrap">
               <label for="nickname">닉네임</label>
               <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요." />
-              <p class="input--error">영문 혹은 한글을 1~6자로 입력해주세요.</p>
+              <p class="input--error"></p>
             </div>
             <div class="input__wrap">
               <label for="userEmail">이메일</label>
               <p class="input__box">
-                <input type="text" id="userEmail" name="userEmail" placeholder="shallwetrip@shallwetrip.com" />
-                <button type="button" class="input__box--check">중복 체크</button>
+                <input type="text" id="userEmail" name="email" placeholder="shallwetrip@shallwetrip.com" />
+                <button type="button" class="input__box--check" disabled>중복 체크</button>
               </p>
-              <p class="input--error">이메일 형식에 맞게 입력해주세요.</p>
+              <p class="input--error"></p>
             </div>
             <div class="input__wrap">
               <label for="password">비밀번호</label>
               <input
                 type="password"
                 id="password"
-                name="userPassword"
+                name="password"
                 placeholder="영문 또는 숫자를 6~12자로 입력해주세요."
               />
-              <p class="input--error">영문 또는 숫자를 6~12자로 입력해주세요.</p>
+              <p class="input--error"></p>
             </div>
             <div class="input__wrap">
               <label for="confirmPassword">비밀번호 확인</label>
@@ -55,11 +55,14 @@
                 name="confirmPassword"
                 placeholder="비밀번호를 한번 더 입력해주세요."
               />
-              <p class="input--error">비밀번호가 일치하지 않습니다.</p>
+              <p class="input--error"></p>
             </div>
-            <button type="submit" class="sign--submit">가입하기</button>
+            <button type="submit" class="button--submit" disabled>가입하기</button>
           </fieldset>
         </form>
+        <div class="sign--link">
+          <a href="/">로그인 페이지로 돌아가기</a>
+        </div>
       </main>
     </div>
   </body>
