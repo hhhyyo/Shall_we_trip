@@ -1,27 +1,26 @@
 @use '../base/' as *;
 
 // input style
-.input {
-  &__wrap {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+.input-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: rem(20px);
 
-    label {
-      padding-left: rem(14px);
-      margin-bottom: rem(16px);
-      font-size: rem(20px);
-    }
+  label {
+    padding-left: rem(14px);
+    margin-bottom: rem(16px);
+    font-size: inherit;
+  }
 
-    input {
-      border: 0;
-      background: $light-gray;
-      padding: rem(16px) rem(14px);
-      border-radius: rem(10px);
+  input {
+    border: 0;
+    background: $light-gray;
+    padding: rem(16px) rem(14px);
+    border-radius: rem(10px);
+    font-size: inherit;
+    &::placeholder {
       font-size: rem(20px);
-      &::placeholder {
-        font-size: rem(20px);
-      }
     }
   }
 }
