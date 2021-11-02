@@ -50,8 +50,6 @@
   }
 
   .budget {
-    position: relative;
-
     &__total,
     &__rest {
       display: flex;
@@ -68,20 +66,8 @@
 
     &__total-cost,
     &__rest-cost {
-      display: inline-block;
-      width: rem(112);
-      font-size: rem(20);
-      font-weight: 500;
-    }
-
-    &__button {
-      color: $black;
-      font-size: rem(25);
-      border: none;
-      background-color: transparent;
-      position: absolute;
-      right: rem(32);
-      top: rem(32);
+      font-size: rem(22);
+      font-weight: 600;
     }
   }
 
@@ -108,8 +94,8 @@
     &__total-cost,
     &__cash-cost,
     &__card-cost {
-      font-size: rem(20);
-      font-weight: 500;
+      font-size: rem(22);
+      font-weight: 600;
       margin: rem(16) 0 rem(32);
     }
 
