@@ -173,4 +173,8 @@
       }
     }
   }
+  // FIXME: 추후 나라 변경 가능하도록, html에도 readonly제거.
+  &__section--after--countryinput {
+    outline: none;
+  }
 }
