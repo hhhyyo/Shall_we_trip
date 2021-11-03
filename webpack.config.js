@@ -7,7 +7,8 @@ module.exports = {
   // 번들 설정 진입점
   entry: {
     // 프로퍼티 키가 output의 [name]에 매칭
-    app: './src/js/app.js',
+    index: './src/js/index.js',
+    expense: './src/js/controller/expense.js',
   },
   // 번들링된 js 파일의 이름(filename)과 저장될 경로(path)를 지정
   output: {
@@ -18,22 +19,27 @@ module.exports = {
     // 번들링된 JS 파일을 html 파일에 자동 추가해주는 플러그인
     new HtmlWebpackPlugin({
       template: 'src/pages/index.html',
+      chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
       filename: 'signup/index.html',
       template: 'src/pages/signup.html',
+      chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
       filename: 'trip-list/index.html',
       template: 'src/pages/trip-list.html',
+      chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
       filename: 'exchange/index.html',
       template: 'src/pages/exchange.html',
+      chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
       filename: 'trip-expense/index.html',
       template: 'src/pages/trip-expense.html',
+      chunks: ['index', 'expense'],
     }),
     // css 결과물을 내보내기 위한 플러그인. 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
     new MiniCssExtractPlugin({ filename: 'css/style.css' }),
