@@ -25,7 +25,7 @@ const fetch = async () => {
     // tripId를 받아왔다고 가정
     const tripId = 2;
     const { data } = await axios.get(`/api/trips/${tripId}`);
-    setTrip(data);
+    setTrip(data[0]);
   } catch (error) {
     console.error();
   }
