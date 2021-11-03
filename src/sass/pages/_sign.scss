@@ -14,28 +14,8 @@
   }
 
   .input {
-    &__wrap {
-      position: relative;
-      display: flex;
-      flex-direction: column;
+    &-wrap {
       margin-bottom: rem(60px);
-
-      label {
-        padding-left: rem(14px);
-        margin-bottom: rem(16px);
-        font-size: rem(20px);
-      }
-
-      input {
-        border: 0;
-        background: $light-gray;
-        padding: rem(10px) rem(14px);
-        border-radius: rem(10px);
-        font-size: rem(20px);
-        &::placeholder {
-          font-size: rem(20px);
-        }
-      }
     }
 
     &__box {
@@ -54,12 +34,13 @@
         padding: rem(5px) rem(10px);
         border: 0;
         border-radius: rem(6px);
-        background: #ddd;
-        color: #777;
+        color: $white;
+        background: $navy;
 
-        &.active {
-          color: $white;
-          background: $navy;
+        &:disabled {
+          background: #ddd;
+          color: #777;
+          cursor: not-allowed;
         }
       }
     }
@@ -78,19 +59,6 @@
         display: block;
       }
     }
-  }
-
-  &--submit {
-    display: block;
-    width: 100%;
-    padding: rem(16px) 0;
-    background: $navy;
-    font-size: rem(20px);
-    font-weight: 700;
-    color: $white;
-    text-align: center;
-    border: 0;
-    border-radius: rem(10px);
   }
 
   &--link {

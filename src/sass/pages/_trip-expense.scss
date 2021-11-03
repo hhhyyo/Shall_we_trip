@@ -40,7 +40,6 @@
       display: block;
       margin-top: rem(10);
       font-size: rem(18);
-      font-weight: 100;
       letter-spacing: rem(2);
 
       @include mobile {
@@ -50,8 +49,6 @@
   }
 
   .budget {
-    position: relative;
-
     &__total,
     &__rest {
       display: flex;
@@ -63,25 +60,12 @@
     &__total-text,
     &__rest-text {
       font-size: rem(20);
-      font-weight: 200;
     }
 
     &__total-cost,
     &__rest-cost {
-      display: inline-block;
-      width: rem(112);
-      font-size: rem(20);
-      font-weight: 500;
-    }
-
-    &__button {
-      color: $black;
-      font-size: rem(25);
-      border: none;
-      background-color: transparent;
-      position: absolute;
-      right: rem(32);
-      top: rem(32);
+      font-size: rem(22);
+      font-weight: 700;
     }
   }
 
@@ -101,27 +85,29 @@
     &__cash-text,
     &__card-text {
       font-size: rem(20);
-      font-weight: 200;
       margin: rem(32) 0 rem(16);
     }
 
     &__total-cost,
     &__cash-cost,
     &__card-cost {
-      font-size: rem(20);
-      font-weight: 500;
+      font-size: rem(22);
+      font-weight: 700;
       margin: rem(16) 0 rem(32);
     }
 
     &__list {
       position: relative;
+      & > li {
+        padding: 0;
+      }
     }
 
     &__item {
       position: relative;
       display: flex;
       justify-content: space-between;
-      padding-left: rem(150);
+      padding: rem(16) rem(48) rem(16) rem(150);
 
       @include mobile {
         padding-left: rem(120);
@@ -183,7 +169,7 @@
 
     &__title {
       font-size: rem(20);
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.4;
       margin: rem(16) 0 rem(4);
       word-break: break-all;

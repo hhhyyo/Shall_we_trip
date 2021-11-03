@@ -1,14 +1,3 @@
-// import axios from 'axios';
+import { fetch } from '../store/expense';
 
-// const btn = document.querySelector('button');
-
-// btn.onclick = async () => {
-//   try {
-//     const { data } = await axios.get('/api/expense');
-//     console.log(data);
-//   } catch (e) {
-//     console.error(e);
-//   }
-// };
-
-console.log(1);
+document.addEventListener('DOMContentLoaded', fetch);
