@@ -1,6 +1,11 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
+require('dotenv').config();
 
 const router = express.Router();
+router.use(cookieParser());
 
 // Mock data
 let users = [
@@ -50,9 +55,23 @@ router.post('/', (req, res) => {
 // POST /api/users/auth
 router.post('/auth', (req, res) => {
   const { email, password } = req.body;
-  const valid = [...users].filter(user => user.email === email && user.password === password).length;
+  const user = [...users].find(user => user.email === email && user.password === password);
+  const { userId } = user;
 
-  valid ? res.send({ loginSuccess: true }) : res.send({ loginSuccess: false });
+  if (!user) return res.status(401).send({ error: '등록되지 않은 사용자입니다.' });
+
+  const accessToken = jwt.sign({ userId }, process.env.JWT_SECRET_KEY, {
+    expiresIn: '1d',
+  });
+
+  // 쿠키에 토큰 설정(http://expressjs.com/ko/api.html#res.cookie)
+  res.cookie('accessToken', accessToken, {
+    maxAge: 1000 * 60 * 60 * 24 * 7, // 7d
+    httpOnly: true,
+  });
+
+  // 로그인 성공
+  res.send({ email, userId });
 });
 
 module.exports = router;
