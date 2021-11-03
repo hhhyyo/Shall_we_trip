@@ -4,7 +4,7 @@ const $form = document.querySelector('.sign form');
 
 $form.oninput = e => {
   const inputName = getInputName(e.target.name);
-  const $inputError = e.target.closest('.input__wrap').lastElementChild;
+  const $inputError = e.target.closest('.input-wrap').lastElementChild;
   const allInputOfForm = $form.querySelectorAll('input');
 
   inputName.validate =

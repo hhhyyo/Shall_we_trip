@@ -9,6 +9,8 @@ module.exports = {
     // 프로퍼티 키가 output의 [name]에 매칭
     index: './src/js/index.js',
     expense: './src/js/controller/expense.js',
+    signup: './src/js/controller/signup.js',
+    signin: './src/js/controller/signin.js',
   },
   // 번들링된 js 파일의 이름(filename)과 저장될 경로(path)를 지정
   output: {
@@ -19,12 +21,12 @@ module.exports = {
     // 번들링된 JS 파일을 html 파일에 자동 추가해주는 플러그인
     new HtmlWebpackPlugin({
       template: 'src/pages/index.html',
-      chunks: ['index'],
+      chunks: ['index', 'signin'],
     }),
     new HtmlWebpackPlugin({
       filename: 'signup/index.html',
       template: 'src/pages/signup.html',
-      chunks: ['index'],
+      chunks: ['index', 'signup'],
     }),
     new HtmlWebpackPlugin({
       filename: 'trip-list/index.html',
