@@ -14,6 +14,7 @@ $signUpForm.onsubmit = async e => {
       email: e.target.email.value,
       password: e.target.password.value,
     });
+
     window.location.href = '/';
     console.log(data);
   } catch (e) {
