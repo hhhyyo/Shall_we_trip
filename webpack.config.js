@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     // 프로퍼티 키가 output의 [name]에 매칭
     index: './src/js/index.js',
+    exchange: './src/js/controller/exchange.js',
     expense: './src/js/controller/expense.js',
     signup: './src/js/controller/signup.js',
     signin: './src/js/controller/signin.js',
@@ -20,8 +21,8 @@ module.exports = {
   plugins: [
     // 번들링된 JS 파일을 html 파일에 자동 추가해주는 플러그인
     new HtmlWebpackPlugin({
-      template: 'src/pages/index.html',
-      chunks: ['index', 'signin'],
+      template: 'src/index.html',
+      chunks: ['index', 'exchange'],
     }),
     new HtmlWebpackPlugin({
       filename: 'signup/index.html',
@@ -29,13 +30,13 @@ module.exports = {
       chunks: ['index', 'signup'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'trip-list/index.html',
-      template: 'src/pages/trip-list.html',
-      chunks: ['index'],
+      filename: 'signin/index.html',
+      template: 'src/pages/signin.html',
+      chunks: ['index', 'signin'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'exchange/index.html',
-      template: 'src/pages/exchange.html',
+      filename: 'trip-list/index.html',
+      template: 'src/pages/trip-list.html',
       chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
@@ -95,7 +96,6 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:7000',
-        pathRewrite: { '^/api': '' },
       },
     },
     onListening(devServer) {
