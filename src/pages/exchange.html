@@ -15,7 +15,7 @@
           <!-- before -->
           <div class="exchange__section--before">
             <div class="exchange__section--before--country">
-              <input class="exchange__input exchange__section--before--countryinput" type="text" value="미국 USD" />
+              <input class="exchange__input exchange__section--before--countryinput" type="text" value="미국" />
               <!-- <label for="before" class="a11y-hidden">바꿀 화폐를 선택해주세요</label>
               <select name="before__country" id="before">
                 <option value="미국" selected>미국 USD</option>
@@ -36,7 +36,12 @@
           <!-- after -->
           <div class="exchange__section--after">
             <div class="exchange__section--after--country">
-              <input class="exchange__input exchange__section--after--countryinput" type="text" value="대한민국 KRW" />
+              <input
+                class="exchange__input exchange__section--after--countryinput"
+                type="text"
+                value="대한민국"
+                readonly
+              />
               <!-- <label for="before" class="a11y-hidden">바꿀 화폐를 선택해주세요</label>
               <select name="before__country" id="before">
                 <option value="대한민국" selected>대한민국 KRW</option>
@@ -44,7 +49,9 @@
               </select> -->
             </div>
             <div class="exchange__section--after--moneywrap">
-              <div class="exchange__section--after--money">1,171.00</div>
+              <div class="exchange__section--after--money">
+                <input class="exchange__input exchange__section--after--moneyinput" type="number" value="1170" />
+              </div>
               <div class="exchange__section--after--unit">원</div>
             </div>
           </div>
@@ -54,58 +61,58 @@
           <ul class="exchange__hotplace--itemwrap">
             <li class="exchange__hotplace--item1 exchange__hotplace--item">
               <div class="exchange__hotplace--detail--wrap">
-                <p class="exchange__hotplace--detail--country">미국 USD</p>
+                <p class="exchange__hotplace--detail--country">미국</p>
                 <p class="exchange__hotplace--detail--money">1,174.00</p>
-                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.30%</p>
+                <p class="exchange__hotplace--detail--ratio">+0.30%</p>
               </div>
             </li>
             <li class="exchange__hotplace--item2 exchange__hotplace--item">
               <div class="exchange__hotplace--detail--wrap">
-                <p class="exchange__hotplace--detail--country">일본 JPY</p>
+                <p class="exchange__hotplace--detail--country">일본</p>
                 <p class="exchange__hotplace--detail--money">1,029.69</p>
-                <p class="exchange__hotplace--detail--ratio exchange__ratio--blue">-0.10%</p>
+                <p class="exchange__hotplace--detail--ratio">-0.10%</p>
               </div>
             </li>
             <li class="exchange__hotplace--item3 exchange__hotplace--item">
               <div class="exchange__hotplace--detail--wrap">
-                <p class="exchange__hotplace--detail--country">유럽연합 EUR</p>
+                <p class="exchange__hotplace--detail--country">유럽연합</p>
                 <p class="exchange__hotplace--detail--money">1,357.50</p>
-                <p class="exchange__hotplace--detail--ratio exchange__ratio--blue">-0.07%</p>
+                <p class="exchange__hotplace--detail--ratio">-0.07%</p>
               </div>
             </li>
             <li class="exchange__hotplace--item4 exchange__hotplace--item">
               <div class="exchange__hotplace--detail--wrap">
-                <p class="exchange__hotplace--detail--country">중국 CNY</p>
+                <p class="exchange__hotplace--detail--country">중국</p>
                 <p class="exchange__hotplace--detail--money">183.35</p>
-                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.17%</p>
+                <p class="exchange__hotplace--detail--ratio">+0.17%</p>
               </div>
             </li>
             <li class="exchange__hotplace--item5 exchange__hotplace--item">
               <div class="exchange__hotplace--detail--wrap">
-                <p class="exchange__hotplace--detail--country">영국 GBP</p>
+                <p class="exchange__hotplace--detail--country">영국</p>
                 <p class="exchange__hotplace--detail--money">1,606.33</p>
-                <p class="exchange__hotplace--detail--ratio exchange__ratio--blue">-0.28%</p>
+                <p class="exchange__hotplace--detail--ratio">-0.28%</p>
               </div>
             </li>
             <li class="exchange__hotplace--item6 exchange__hotplace--item">
               <div class="exchange__hotplace--detail--wrap">
-                <p class="exchange__hotplace--detail--country">호주 AUD</p>
+                <p class="exchange__hotplace--detail--country">호주</p>
                 <p class="exchange__hotplace--detail--money">883.08</p>
-                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.26%</p>
+                <p class="exchange__hotplace--detail--ratio">+0.26%</p>
               </div>
             </li>
             <li class="exchange__hotplace--item7 exchange__hotplace--item">
               <div class="exchange__hotplace--detail--wrap">
-                <p class="exchange__hotplace--detail--country">캐나다 CAD</p>
+                <p class="exchange__hotplace--detail--country">캐나다</p>
                 <p class="exchange__hotplace--detail--money">947.23</p>
-                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.04%</p>
+                <p class="exchange__hotplace--detail--ratio">+0.04%</p>
               </div>
             </li>
             <li class="exchange__hotplace--item8 exchange__hotplace--item">
               <div class="exchange__hotplace--detail--wrap">
-                <p class="exchange__hotplace--detail--country">뉴질랜드 NZD</p>
+                <p class="exchange__hotplace--detail--country">뉴질랜드</p>
                 <p class="exchange__hotplace--detail--money">841.29</p>
-                <p class="exchange__hotplace--detail--ratio exchange__ratio--red">+0.09%</p>
+                <p class="exchange__hotplace--detail--ratio">+0.09%</p>
               </div>
             </li>
           </ul>
