@@ -26,7 +26,7 @@ app.get('/trip-list', auth, (req, res) => {
   res.sendFile(path.join(__dirname, './public/trip-list.html'));
 });
 
-app.get('/trip-expense', auth, (req, res) => {
+app.get('/trip-expense', (req, res) => {
   res.sendFile(path.join(__dirname, './public/trip-expense.html'));
 });
 

@@ -20,4 +20,24 @@ const renderTrip = ({ title, budget, cashTotal, cardTotal, currency, startDate, 
   $expenseCardCost.textContent = `${cardTotal} ${currency}`;
 };
 
-export { renderTrip };
+const renderExpenses = (expenses, currency) => {
+  document.querySelector('.expense__list').innerHTML = expenses
+    .map(
+      ({ title, category, paymentMethod, cost, date }) =>
+        `<li class="area">
+        <a href="#" role="button" class="expense__item ${category}">
+          <div class="expense__info">
+            <h3 class="expense__title">${title}</h3>
+            <span class="expense__date">${date}</span>
+          </div>
+          <div class="expense__detail">
+            <b class="expense__cost">-${cost} ${currency}</b>
+            <span class="expense__payment-method">${paymentMethod}</span>
+          </div>
+        </a>
+      </li>`
+    )
+    .join('');
+};
+
+export { renderTrip, renderExpenses };
