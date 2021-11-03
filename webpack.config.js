@@ -25,22 +25,22 @@ module.exports = {
       chunks: ['index', 'exchange'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'signup/index.html',
+      filename: 'signup.html',
       template: 'src/pages/signup.html',
       chunks: ['index', 'signup'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'signin/index.html',
+      filename: 'signin.html',
       template: 'src/pages/signin.html',
       chunks: ['index', 'signin'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'trip-list/index.html',
+      filename: 'trip-list.html',
       template: 'src/pages/trip-list.html',
       chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'trip-expense/index.html',
+      filename: 'trip-expense.html',
       template: 'src/pages/trip-expense.html',
       chunks: ['index', 'expense'],
     }),

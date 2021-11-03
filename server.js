@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const routes = require('./routes');
 
 // express는 함수
@@ -9,6 +10,22 @@ const PORT = 7000;
 app.use(express.static('public'));
 app.use(express.json());
 app.use('/api', routes);
+
+app.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/signin.html'));
+});
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/signup.html'));
+});
+
+app.get('/trip-list', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/trip-list.html'));
+});
+
+app.get('/trip-expense', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/trip-expense.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
