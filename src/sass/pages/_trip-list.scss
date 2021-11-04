@@ -36,6 +36,7 @@
 
     overflow: hidden;
     padding-top: 55px;
+    margin-bottom: rem(28px);
 
     &.empty {
       display: none;
@@ -45,7 +46,7 @@
       align-items: center;
       padding-top: 0;
 
-      &.active{
+      &.active {
         display: flex;
       }
     }
@@ -74,5 +75,27 @@
 
   .color-theme-white {
     color: $white;
+  }
+
+  .input {
+    &-wrap {
+      margin-bottom: rem(60px);
+    }
+
+    &--error {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: rem(10px);
+      padding-left: rem(14px);
+      color: $pink;
+      font-weight: 500;
+      font-size: rem(18px);
+
+      &.active {
+        display: block;
+      }
+    }
   }
 }

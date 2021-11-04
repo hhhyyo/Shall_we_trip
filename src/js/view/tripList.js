@@ -1,9 +1,33 @@
+import flatpickr from 'flatpickr';
 import { parsePeriod, getTripStatus, getBudgetLabel, getBudgetByLabel } from '../utils/helper';
 
 const $nickname = document.querySelector('.trips-container__title>b');
 const $inprogressTrip = document.querySelector('.inprogress-trip');
 const $upcomingTrip = document.querySelector('.upcoming-trip');
 const $lastTrip = document.querySelector('.last-trip');
+
+const $periodInput = document.getElementById('periodInput');
+
+flatpickr($periodInput, {
+  mode: 'range',
+  dateFormat: 'Y.m.d',
+  minDate: 'today',
+  locale: {
+    weekdays: {
+      shorthand: ['일', '월', '화', '수', '목', '금', '토'],
+      longhand: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+    },
+
+    months: {
+      shorthand: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      longhand: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    },
+
+    ordinal: () => '일',
+
+    rangeSeparator: ' ~ ',
+  },
+});
 
 const getTripsInfo = trips =>
   trips.map(({ tripId, title, budget, cashTotal, cardTotal, currency, startDate, endDate }) => {
@@ -47,19 +71,19 @@ const renderTripList = trips => {
   });
 
   if (inprogressList.length > 0) {
-    $inprogressTrip.innerHTML = inprogressList.join();
+    $inprogressTrip.innerHTML = inprogressList.join('');
   } else {
     $inprogressTrip.innerHTML = '<li class="trips-item empty active">여행을 추가해주세요.</li>';
   }
 
   if (upcomingTrip.length > 0) {
-    $upcomingTrip.innerHTML = upcomingTrip.join();
+    $upcomingTrip.innerHTML = upcomingTrip.join('');
   } else {
     $upcomingTrip.innerHTML = '<li class="trips-item empty active">여행을 추가해주세요.</li>';
   }
 
   if (lastTrip.length > 0) {
-    $lastTrip.innerHTML = lastTrip.join();
+    $lastTrip.innerHTML = lastTrip.join('');
   } else {
     $lastTrip.innerHTML = '<li class="trips-item empty active">여행을 추가해주세요.</li>';
   }

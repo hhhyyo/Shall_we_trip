@@ -69,6 +69,8 @@ let trips = [
   },
 ];
 
+const generateId = () => Math.max(...trips.map(trip => trip.tripId), 0) + 1;
+
 // GET /trips
 router.get('/', (req, res) => {
   const tripList = trips.filter(trip => trip.userId === req.userId);
@@ -93,6 +95,28 @@ router.patch('/:id', (req, res) => {
   const trip = trips.find(trip => trip.tripId === +id);
 
   res.send(trip);
+});
+
+// POST /trips
+router.post('/', (req, res) => {
+  const { country, title, budget, currency, startDate, endDate } = req.body;
+  const { userId } = req;
+  const newTrip = {
+    tripId: generateId(),
+    userId,
+    country,
+    title,
+    budget,
+    cashTotal: 0,
+    cardTotal: 0,
+    currency,
+    startDate,
+    endDate,
+  };
+
+  trips = [...trips, newTrip];
+
+  res.send(newTrip);
 });
 
 module.exports = router;
