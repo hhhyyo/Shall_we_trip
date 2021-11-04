@@ -69,9 +69,13 @@ $modalForm.onsubmit = e => {
 };
 
 $cost.oninput = async e => {
-  $cost.value = $cost.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-  const country = getCountry();
-  const exchangedCost = await forwardExchangeRender(+e.target.value, country);
+  try {
+    $cost.value = $cost.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    const country = getCountry();
+    const exchangedCost = await forwardExchangeRender(+e.target.value, country);
 
-  $inputWrapGuide.innerHTML = `현재 환율로 약 <b>${exchangedCost}원</b> 입니다.`;
+    $inputWrapGuide.innerHTML = `현재 환율로 약 <b>${exchangedCost}원</b> 입니다.`;
+  } catch (error) {
+    console.error(error);
+  }
 };

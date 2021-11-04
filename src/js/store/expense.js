@@ -43,7 +43,7 @@ const fetchExpenses = async () => {
 
     setExpenses(data);
   } catch (error) {
-    console.error();
+    console.error(error);
   }
 };
 
@@ -56,12 +56,21 @@ const setExpensesFilter = newFilter => {
 const fetchTripInfo = async () => {
   try {
     const tripId = searchParam();
-    const { data } = await axios.get(`/api/trips/${tripId}`);
 
-    setTrip(data[0]);
-    fetchExpenses();
+    const [trip, expenses] = await Promise.all([
+      axios.get(`/api/trips/${tripId}`),
+      axios.get(`/api/expenses`, {
+        params: {
+          category: state.expenses.filter,
+          tripId,
+        },
+      }),
+    ]);
+
+    setTrip(trip.data);
+    setExpenses(expenses.data);
   } catch (error) {
-    console.error();
+    console.error(error);
   }
 };
 
@@ -71,20 +80,23 @@ const getCountry = () => state.trip.country;
 
 const addExpense = async newExpense => {
   try {
-    const { data } = await axios.post(`/api/expenses`, {
-      tripId: state.trip.tripId,
-      ...newExpense,
-    });
-
     const expense =
       newExpense.paymentMethod === '현금'
         ? { cashTotal: +newExpense.cost + state.trip.cashTotal }
         : { cardTotal: +newExpense.cost + state.trip.cardTotal };
-    const trip = await axios.patch(`/api/trips/${state.trip.tripId}`, expense);
+
+    const [expenses, trip] = await Promise.all([
+      axios.post(`/api/expenses`, {
+        tripId: state.trip.tripId,
+        ...newExpense,
+      }),
+      axios.patch(`/api/trips/${state.trip.tripId}`, expense),
+    ]);
+
+    setExpenses(expenses.data);
     setTrip(trip.data);
-    setExpenses(data);
   } catch (error) {
-    console.error();
+    console.error(error);
   }
 };
 

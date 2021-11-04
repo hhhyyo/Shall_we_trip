@@ -79,7 +79,7 @@ router.get('/', (req, res) => {
 // GET /trips/id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  const trip = trips.filter(trip => trip.tripId === +id);
+  const trip = trips.filter(trip => trip.tripId === +id)[0];
 
   res.send(trip);
 });
