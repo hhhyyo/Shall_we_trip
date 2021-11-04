@@ -65,4 +65,27 @@ const fetchTripInfo = async () => {
   }
 };
 
-export { fetchTripInfo, setExpensesFilter };
+const getCurreny = () => state.trip.currency;
+
+const getCountry = () => state.trip.country;
+
+const addExpense = async newExpense => {
+  try {
+    const { data } = await axios.post(`/api/expenses`, {
+      tripId: state.trip.tripId,
+      ...newExpense,
+    });
+
+    const expense =
+      newExpense.paymentMethod === '현금'
+        ? { cashTotal: +newExpense.cost + state.trip.cashTotal }
+        : { cardTotal: +newExpense.cost + state.trip.cardTotal };
+    const trip = await axios.patch(`/api/trips/${state.trip.tripId}`, expense);
+    setTrip(trip.data);
+    setExpenses(data);
+  } catch (error) {
+    console.error();
+  }
+};
+
+export { setExpensesFilter, fetchTripInfo, getCurreny, addExpense, getCountry };

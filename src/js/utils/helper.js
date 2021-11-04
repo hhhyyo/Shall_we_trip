@@ -17,4 +17,20 @@ const getBudgetLabel = tripStatus => (tripStatus === 0 ? '남은 예산' : tripS
 const getBudgetByLabel = (tripStatus, budget, totalExpense) =>
   tripStatus === 0 ? budget - totalExpense : tripStatus > 0 ? budget : totalExpense;
 
-export { parsePeriod, searchParam, getTripStatus, getBudgetLabel, getBudgetByLabel };
+const getNow = () => {
+  const date = new Date();
+  const [year, month, day, hour, minute] = [
+    date.getFullYear() + '',
+    date.getMonth() + 1 + '',
+    date.getDate() + '',
+    date.getHours() + '',
+    date.getMinutes() + '',
+  ];
+
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')} ${hour.padStart(2, '0')}:${minute.padStart(
+    2,
+    '0'
+  )}`;
+};
+
+export { parsePeriod, searchParam, getTripStatus, getBudgetLabel, getBudgetByLabel, getNow };

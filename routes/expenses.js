@@ -5,7 +5,7 @@ const router = express.Router();
 // MOCK 데이터
 let expenses = [
   {
-    expenseId: 1,
+    expenseId: 6,
     tripId: 2,
     title: '가방',
     category: 'shopping',
@@ -14,7 +14,7 @@ let expenses = [
     date: '2021-10-31 13:18',
   },
   {
-    expenseId: 2,
+    expenseId: 5,
     tripId: 2,
     title: '기부',
     category: 'etc',
@@ -23,7 +23,7 @@ let expenses = [
     date: '2021-10-26 13:18',
   },
   {
-    expenseId: 3,
+    expenseId: 4,
     tripId: 2,
     title: '옷',
     category: 'shopping',
@@ -32,7 +32,7 @@ let expenses = [
     date: '2021-10-31 13:18',
   },
   {
-    expenseId: 4,
+    expenseId: 3,
     tripId: 2,
     title: '차비',
     category: 'traffic',
@@ -41,7 +41,7 @@ let expenses = [
     date: '2021-10-31 13:18',
   },
   {
-    expenseId: 5,
+    expenseId: 2,
     tripId: 2,
     title: '박물관',
     category: 'tour',
@@ -50,7 +50,7 @@ let expenses = [
     date: '2021-10-26 13:18',
   },
   {
-    expenseId: 6,
+    expenseId: 1,
     tripId: 2,
     title: '호텔',
     category: 'accommodation',
@@ -59,6 +59,8 @@ let expenses = [
     date: '2021-10-31 13:18',
   },
 ];
+
+const generateExpenseId = () => Math.max(...expenses.map(expense => expense.expenseId), 0) + 1;
 
 router.get('/', (req, res) => {
   const { tripId, category } = req.query;
@@ -70,7 +72,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const newExpense = req.body;
+  const newExpense = { expenseId: generateExpenseId(), ...req.body };
   expenses = [newExpense, ...expenses];
 
   res.send(expenses);

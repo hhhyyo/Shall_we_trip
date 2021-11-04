@@ -5,10 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shall We Trip?</title>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/light.css">
   </head>
   <body>
     <div class="container">
       <h1 class="a11y-hidden">Shall We Trip?</h1>
+       <nav class="commonMenu">
+        <ul class="commonMenu__listwrap">
+          <li class="commonMenu__list commonMenu__exchange">
+            <a href="/" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-calculator"></i>
+              <p class="commonMenu__text">환율</p>
+            </a>
+          </li>
+          <li class="commonMenu__list commonMenu__trip-list">
+            <a href="/trip-list" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-book"></i>
+              <p class="commonMenu__text">여행리스트</p>
+            </a>
+          </li>
+          <li class="commonMenu__list">
+            <button class="commonMenu__item add-expense" type="button">
+              <span class="commonMenu__add theme-color"></span>
+              <span class="commonMenu__text commonMenu__add--text">지출추가</span>
+            </button>
+          </li>
+          <li class="commonMenu__list commonMenu__chart unimplemented">
+            <a href="#" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-pie-chart-alt-2"></i>
+              <p class="commonMenu__text">통계</p>
+            </a>
+          </li>
+          <li class="commonMenu__list commonMenu__setting" data-page="setting">
+            <button type="button" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-cog"></i>
+              <p class="commonMenu__text">설정</p>
+            </button>
+          </li>
+        </ul>
+        <ul class="commonMenu__setwrap">
+          <li>
+            <a href="#" class="commonMenu__logout"><i class="commonMenu__logout--icon bx bx-log-out"></i> 로그아웃</a>
+          </li>
+        </ul>
+      </nav>
       <main class="expense-main">
         <div class="trip">
           <h2 class="trip__title">미국 살고 오기!! 그랜드캐니언 가기</h2>
@@ -63,7 +103,7 @@
           </li>
         </ul>
         <ul class="expense__list"></ul>
-        <div class="modal-bg active">
+        <div class="modal-bg">
           <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
             <h3 id="modalTitle" class="a11y-hidden">여행 추가</h3>
             <button type="button" class="button button-close-modal" aria-label="모달 닫기" title="모달 닫기">
@@ -76,27 +116,27 @@
                   <label>카테고리</label>
                   <ul class="modal-category">
                     <li class="modal-category__item">
-                      <input type="radio" id="meal" name="category" class="modal-category__button meal" checked></input>
+                      <input type="radio" id="meal" name="category" value="meal" class="modal-category__button meal" checked></input>
                       <label for="meal" class="modal-category__text">식비</label >
                     </li>
                     <li class="modal-category__item">
-                      <input type="radio" id="shopping" name="category" class="modal-category__button shopping"></input>
+                      <input type="radio" id="shopping" name="category" value="shopping" class="modal-category__button shopping"></input>
                       <label for="shopping" class="modal-category__text">쇼핑</label>
                     </li>
                     <li class="modal-category__item">
-                      <input type="radio" id="tour" name="category" class="modal-category__button tour"></input>
+                      <input type="radio" id="tour" name="category" value="tour" class="modal-category__button tour"></input>
                       <label for="tour" class="modal-category__text">관광</label>
                     </li>
                     <li class="modal-category__item">
-                      <input type="radio" id="traffic" name="category" class="modal-category__button traffic"></input>
+                      <input type="radio" id="traffic" name="category" value="traffic" class="modal-category__button traffic"></input>
                       <label for="traffic" class="modal-category__text">교통</label>
                     </li>
                     <li class="modal-category__item">
-                      <input type="radio" id="accommodation" name="category" class="modal-category__button accommodation"></input>
+                      <input type="radio" id="accommodation" name="category" value="accommodation" class="modal-category__button accommodation"></input>
                       <label for="accommodation" class="modal-category__text">숙박</label>
                     </li>
                     <li class="modal-category__item">
-                      <input type="radio" id="etc" name="category" class="modal-category__button etc"></input>
+                      <input type="radio" id="etc" name="category" value="etc" class="modal-category__button etc"></input>
                       <label for="etc" class="modal-category__text">기타</label>
                     </li>
                   </ul>
@@ -105,41 +145,37 @@
                   <label>결제수단</label>
                   <ul class="modal-paymentMethod">
                     <li class="modal-paymentMethod__item">
-                      <input type="radio" id="cash" name="paymentMethod" class="modal-paymentMethod__button cash" checked></input>
+                      <input type="radio" id="cash" name="paymentMethod" value="현금" class="modal-paymentMethod__button cash" checked></input>
                       <label for="cash" class="modal-paymentMethod__text">현금</label>
                     </li>
                     <li class="modal-paymentMethod__item">
-                      <input type="radio" id="card" name="paymentMethod" class="modal-paymentMethod__button card"></input>
+                      <input type="radio" id="card" name="paymentMethod" value="카드" class="modal-paymentMethod__button card"></input>
                       <label for="card" class="modal-paymentMethod__text">카드</label>
                     </li>
                   </ul>
                 </div>
-                <div class="input-date">
-                  <div class="input-wrap">
-                    <label>결제수단</label>
-                    <input type="text" readonly />
-                  </div>
-                  <span>~</span>
-                  <div class="input-wrap">
-                    <label>여행종료일</label>
-                    <input type="text" readonly />
-                  </div>
+                <div class="input-wrap">
+                  <label for="title">내용</label>
+                  <input type="text" id="title" name="title"/>
                 </div>
                 <div class="input-wrap">
-                  <label>총 예산</label>
+                  <label for="date">사용한 시간</label>
+                  <input type="text" id="date" name="date" />
+                </div>
+                <div class="input-wrap">
+                  <label for="cost">금액</label>
                   <div class="input-money">
-                    <input placeholder="원화로 입력해주세요" />
-                    <span class="input-money__unit">원</span>
+                    <input type="text" id="cost" name="cost"  placeholder="원화로 입력해주세요" />
+                    <span class="input-money__unit"></span>
                   </div>
-                  <p class="input-wrap__guide">현재 환율로 약 <b>300달러</b> 입니다.</p>
+                  <p class="input-wrap__guide">현재 환율로 약 <b>30000원</b> 입니다.</p>
                 </div>
               </fieldset>
+              <button type="submit" class="button--submit">저장</button>
             </form>
-            <button type="submit" class="button--submit">만들기</button>
           </div>
         </div>
       </main>
-      <nav>common component 삽입 예정</nav>
     </div>
   </body>
 </html>

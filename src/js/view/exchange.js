@@ -58,7 +58,7 @@ const exchangeBeforeUnit = document.querySelector('.exchange__section--before--u
 const afterMoney = document.querySelector('.exchange__section--after--moneyinput');
 const hotplaceWrap = document.querySelectorAll('.exchange__hotplace--detail--wrap');
 
-// 외화 -> 원
+// 원 -> 외화
 const invertExchangeRender = async (money, inCountry) => {
   const apiURL = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${country[inCountry][0]}`;
   try {
@@ -70,12 +70,12 @@ const invertExchangeRender = async (money, inCountry) => {
   }
 };
 
-// 원 -> 외화
+// 외화 -> 원
 const forwardExchangeRender = async (money, inCountry) => {
   const apiURL = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${country[inCountry][0]}`;
   try {
     const response = await axios.get(apiURL);
-    const exchangeMoney = money * response.data[0].basePrice.toFixed(2);
+    const exchangeMoney = (money * response.data[0].basePrice).toFixed(2);
     return exchangeMoney;
   } catch (error) {
     console.log(error);

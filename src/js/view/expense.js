@@ -1,3 +1,4 @@
+import flatpickr from 'flatpickr';
 import { parsePeriod } from '../utils/helper';
 
 const $tripTitle = document.querySelector('.trip__title');
@@ -7,6 +8,13 @@ const $budgetRestCost = document.querySelector('.budget__rest-cost');
 const $expenseTotalCost = document.querySelector('.expense__total-cost');
 const $expenseCashCost = document.querySelector('.expense__cash-cost');
 const $expenseCardCost = document.querySelector('.expense__card-cost');
+
+const $date = document.getElementById('date');
+
+flatpickr($date, {
+  enableTime: true,
+  dateFormat: 'Y-m-d H:i',
+});
 
 const renderTrip = ({ title, budget, cashTotal, cardTotal, currency, startDate, endDate }) => {
   const totalCost = cashTotal + cardTotal;
