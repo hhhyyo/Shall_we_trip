@@ -58,6 +58,9 @@
       &.active {
         display: block;
       }
+      &.correct {
+        color: $navy;
+      }
     }
   }
 
