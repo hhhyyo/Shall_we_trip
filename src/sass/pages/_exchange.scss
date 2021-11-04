@@ -1,6 +1,7 @@
 @use '../base/' as *;
 
 .exchange {
+  padding-bottom: rem(50px);
   &__header {
     color: white;
     font-weight: bold;
@@ -71,7 +72,7 @@
 
   &__hotplace {
     padding: rem(24px);
-    margin-top: rem(360px);
+    margin-top: rem(60px);
 
     &--itemwrap {
       display: flex;
@@ -176,5 +177,123 @@
   // FIXME: 추후 나라 변경 가능하도록, html에도 readonly제거.
   &__section--after--countryinput {
     outline: none;
+  }
+}
+
+// commonMenu --------------------------------------------------------
+.commonMenu {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  background-color: white;
+  margin: 0 auto;
+  max-width: 768px;
+  width: 98%;
+  padding: rem(20px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: rem(30px) rem(30px) 0 0;
+  box-shadow: 0 rem(10px) rem(40px) rem(2px) gray;
+
+  &__listwrap {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__list {
+    width: 18%;
+
+    button {
+      width: 100%;
+      white-space: nowrap;
+      border: none;
+      background: white;
+    }
+  }
+
+  &__item {
+    width: 20%;
+    text-align: center;
+  }
+
+  &__add {
+    width: 125%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &--img {
+      position: absolute;
+      width: 90%;
+      left: 50%;
+      transform: translate(-50%, rem(-50px));
+
+      @include desktop {
+        transform: translate(-50%, rem(-70px));
+        width: 60%;
+      }
+    }
+  }
+
+  &__add--text {
+    position: relative;
+    transform: translateY(rem(37px));
+    @include desktop {
+      transform: translateY(rem(40px));
+    }
+  }
+
+  &__icon {
+    display: block;
+    position: relative;
+    font-size: rem(28px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: rem(10px);
+    @include desktop {
+      padding-bottom: rem(12px);
+    }
+  }
+
+  &__text {
+    font-size: rem(12px);
+    @include desktop {
+      font-size: rem(24px);
+    }
+  }
+
+  // 로그아웃
+  &__setwrap {
+    position: fixed;
+    right: rem(10px);
+    bottom: rem(100px);
+    opacity: 0;
+    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: rem(20px);
+    transition: all 0.2s;
+
+    @include desktop {
+      bottom: rem(120px);
+    }
+
+    &.opacityChange {
+      opacity: 1;
+    }
+  }
+  &__logout {
+    display: block;
+    padding: rem(12px);
+    font-size: rem(14px);
+
+    @include desktop {
+      font-size: rem(24px);
+    }
+
+    &--icon {
+      color: red;
+    }
   }
 }
