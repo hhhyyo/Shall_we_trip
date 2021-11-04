@@ -19,8 +19,8 @@ const formData = {
     validate: false,
   },
   phoneNumber: {
-    RegExp: /[0-9]{10,11}$/,
-    errorMessage: `'-' 없이 숫자만 입력해주세요.`,
+    RegExp: /^01[0-9]{8,9}$/,
+    errorMessage: `'-' 없이 10~11자의 숫자만 입력해주세요.`,
     validate: false,
   },
   nickname: {
