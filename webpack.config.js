@@ -12,6 +12,7 @@ module.exports = {
     expense: './src/js/controller/expense.js',
     signup: './src/js/controller/signup.js',
     signin: './src/js/controller/signin.js',
+    tripList: './src/js/controller/tripList.js',
   },
   // 번들링된 js 파일의 이름(filename)과 저장될 경로(path)를 지정
   output: {
@@ -37,7 +38,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'trip-list.html',
       template: 'src/pages/trip-list.html',
-      chunks: ['index'],
+      chunks: ['index', 'tripList'],
     }),
     new HtmlWebpackPlugin({
       filename: 'trip-expense.html',
