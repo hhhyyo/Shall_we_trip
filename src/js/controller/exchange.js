@@ -112,3 +112,40 @@ exchangeSection.addEventListener('change', () => {
   // 국가도 써있고 돈도 입력했다면 렌더
   exchangeRender();
 });
+
+// -----------------------------
+// POINT: 임시 공통 메뉴 작업용
+
+// 1. 로그아웃 버튼
+const settingButton = document.querySelector('.commonMenu__setting');
+const settingWrap = document.querySelector('.commonMenu__setwrap');
+const commonMenuListWrap = document.querySelector('.commonMenu__listwrap');
+const commonMenuList = document.querySelectorAll('.commonMenu__list');
+
+settingButton.addEventListener('click', e => {
+  if (!e.target.closest('.commonMenu__setting')) return;
+  settingWrap.classList.toggle('opacityChange');
+});
+
+// 2. 현재 위치면 아이콘, 텍스트 색상 바뀌게
+window.addEventListener('DOMContentLoaded', () => {
+  const mainClass = document.querySelector('main');
+  [...commonMenuList].forEach(menu => {
+    if (menu.className.split(' ')[1]) {
+      menu.style.color = menu.className.split(' ')[1].split('__')[1] === mainClass.className ? 'blue' : '';
+    }
+  });
+});
+
+// 3. 마우스 움직일 때 스토틀링으로 제어하기
+
+// 미구현 클래스 들어있을 때 미구현 버튼을 클릭하면 popup창 띄워주고 이벤트 발생안하게
+commonMenuListWrap.addEventListener('click', e => {
+  if (!e.target.closest('.unimplemented')) return;
+  e.preventDefault();
+  window.alert('구현중인 페이지입니다.');
+});
+
+// [...commonMenuList].forEach(el => {
+//   if(e.target.closest('.unimplemented'))
+// })
