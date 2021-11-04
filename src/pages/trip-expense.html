@@ -51,32 +51,32 @@
       </nav>
       <main class="expense-main">
         <div class="trip">
-          <h2 class="trip__title">미국 살고 오기!! 그랜드캐니언 가기</h2>
+          <h2 class="trip__title"></h2>
           <button class="trip__button"><i class="bx bxs-edit"></i></button>
-          <span class="trip__period">2021.10.01~2021.10.31</span>
+          <span class="trip__period"></span>
         </div>
         <div class="area budget">
           <div class="budget__total">
             <span class="budget__total-text">총 예산</span>
-            <b class="budget__total-cost">300 달러</b>
+            <b class="budget__total-cost"></b>
           </div>
           <div class="budget__rest">
             <span class="budget__rest-text">남은 예산</span>
-            <b class="budget__rest-cost">150 달러</b>
+            <b class="budget__rest-cost"></b>
           </div>
         </div>
         <div class="area expense">
           <div class="expense__total">
             <span class="expense__total-text">총 지출</span>
-            <b class="expense__total-cost">150 달러</b>
+            <b class="expense__total-cost"></b>
           </div>
           <div class="expense__cash">
             <span class="expense__cash-text">현금 지출</span>
-            <b class="expense__cash-cost">50 달러</b>
+            <b class="expense__cash-cost"></b>
           </div>
           <div class="expense__card">
             <span class="expense__card-text">카드 지출</span>
-            <b class="expense__card-cost">100 달러</b>
+            <b class="expense__card-cost"></b>
           </div>
         </div>
         <ul class="category">
@@ -109,11 +109,11 @@
             <button type="button" class="button button-close-modal" aria-label="모달 닫기" title="모달 닫기">
               <span aria-hidden="true">×</span>
             </button>
-            <form action="" class="modal__form">
+            <form action="" class="modal__form" autocomplete="off">
               <fieldset>
                 <legend class="a11y-hidden">지출 정보 입력</legend>
                 <div class="input-wrap">
-                  <label>카테고리</label>
+                  <label class="top-label">카테고리</label>
                   <ul class="modal-category">
                     <li class="modal-category__item">
                       <input type="radio" id="meal" name="category" value="meal" class="modal-category__button meal" checked></input>
@@ -168,7 +168,7 @@
                     <input type="text" id="cost" name="cost"  placeholder="원화로 입력해주세요" />
                     <span class="input-money__unit"></span>
                   </div>
-                  <p class="input-wrap__guide">현재 환율로 약 <b>30000원</b> 입니다.</p>
+                  <p class="input-wrap__guide"></p>
                 </div>
               </fieldset>
               <button type="submit" class="button--submit">저장</button>

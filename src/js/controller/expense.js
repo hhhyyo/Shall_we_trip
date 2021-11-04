@@ -2,23 +2,30 @@ import { fetchTripInfo, setExpensesFilter, getCurreny, getCountry, addExpense } 
 import { getNow } from '../utils/helper';
 import { forwardExchangeRender } from '../view/exchange';
 
+const $body = document.querySelector('body');
 const $commonMenu = document.querySelector('.commonMenu');
 const $addExpense = document.querySelector('.add-expense');
 const $category = document.querySelector('.category');
 const $modalBg = document.querySelector('.modal-bg');
 const $buttonCloseModal = document.querySelector('.button-close-modal');
 const $modalForm = document.querySelector('.modal__form');
+const $meal = document.getElementById('meal');
+const $cash = document.getElementById('cash');
+const $title = document.getElementById('title');
 const $date = document.getElementById('date');
 const $cost = document.getElementById('cost');
 const $inputMoneyUnit = document.querySelector('.input-money__unit');
+const $inputWrapGuide = document.querySelector('.input-wrap__guide');
 
 document.addEventListener('DOMContentLoaded', fetchTripInfo);
 
 $addExpense.onclick = () => {
   $commonMenu.classList.add('a11y-hidden');
   $modalBg.classList.add('active');
+  $body.classList.add('overflow-hidden');
   $date.value = getNow();
   $inputMoneyUnit.textContent = getCurreny();
+  document.querySelector('.top-label').scrollIntoView();
 };
 
 $category.onclick = ({ target }) => {
@@ -34,6 +41,13 @@ $category.onclick = ({ target }) => {
 const resetForm = () => {
   $commonMenu.classList.remove('a11y-hidden');
   $modalBg.classList.remove('active');
+  $body.classList.remove('overflow-hidden');
+
+  $meal.checked = true;
+  $cash.checked = true;
+  $title.value = '';
+  $cost.value = '';
+  $inputWrapGuide.innerHTML = '';
 };
 
 $buttonCloseModal.onclick = resetForm;
@@ -51,10 +65,13 @@ $modalForm.onsubmit = e => {
 
   addExpense(expense);
   resetForm();
+  $category.scrollIntoView();
 };
 
-$cost.onkeyup = async ({ target }) => {
+$cost.oninput = async e => {
+  $cost.value = $cost.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
   const country = getCountry();
-  const cost = await forwardExchangeRender(+target.value, country);
-  console.log(cost);
+  const exchangedCost = await forwardExchangeRender(+e.target.value, country);
+
+  $inputWrapGuide.innerHTML = `현재 환율로 약 <b>${exchangedCost}원</b> 입니다.`;
 };
