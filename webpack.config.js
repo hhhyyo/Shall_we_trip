@@ -13,6 +13,7 @@ module.exports = {
     signup: './src/js/controller/signup.js',
     signin: './src/js/controller/signin.js',
     tripList: './src/js/controller/tripList.js',
+    navigation: './src/js/controller/navigation.js',
   },
   // 번들링된 js 파일의 이름(filename)과 저장될 경로(path)를 지정
   output: {
@@ -23,7 +24,7 @@ module.exports = {
     // 번들링된 JS 파일을 html 파일에 자동 추가해주는 플러그인
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunks: ['index', 'exchange'],
+      chunks: ['index', 'exchange', 'navigation'],
     }),
     new HtmlWebpackPlugin({
       filename: 'signup.html',
@@ -38,12 +39,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'trip-list.html',
       template: 'src/pages/trip-list.html',
-      chunks: ['index', 'tripList'],
+      chunks: ['index', 'tripList', 'navigation'],
     }),
     new HtmlWebpackPlugin({
       filename: 'trip-expense.html',
       template: 'src/pages/trip-expense.html',
-      chunks: ['index', 'expense'],
+      chunks: ['index', 'expense', 'navigation'],
     }),
     // css 결과물을 내보내기 위한 플러그인. 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
     new MiniCssExtractPlugin({ filename: 'css/style.css' }),

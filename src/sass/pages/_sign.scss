@@ -1,5 +1,12 @@
 @use '../base/' as *;
 
+.container.sign-container {
+  padding-bottom: 30px;
+  @include mobile {
+    padding-bottom: rem(30px);
+  }
+}
+
 .sign {
   padding: rem(40px) rem(25px);
   border-radius: rem(50px);

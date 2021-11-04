@@ -58,12 +58,24 @@ const exchangeBeforeUnit = document.querySelector('.exchange__section--before--u
 const afterMoney = document.querySelector('.exchange__section--after--moneyinput');
 const hotplaceWrap = document.querySelectorAll('.exchange__hotplace--detail--wrap');
 
+// 외화 -> 원
 const invertExchangeRender = async (money, inCountry) => {
   const apiURL = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${country[inCountry][0]}`;
   try {
     const response = await axios.get(apiURL);
-    const exchangeMoney = money / response.data[0].basePrice;
-    console.log(exchangeMoney);
+    const exchangeMoney = (money / response.data[0].basePrice).toFixed(2);
+    return exchangeMoney;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 원 -> 외화
+const forwardExchangeRender = async (money, inCountry) => {
+  const apiURL = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${country[inCountry][0]}`;
+  try {
+    const response = await axios.get(apiURL);
+    const exchangeMoney = money * response.data[0].basePrice.toFixed(2);
     return exchangeMoney;
   } catch (error) {
     console.log(error);
@@ -75,7 +87,6 @@ const exchangeRender = async () => {
   try {
     const response = await axios.get(apiURL);
     afterMoney.value = (beforeMoney.value * response.data[0].basePrice).toFixed(2);
-    // exchangeBeforeUnit.textContent = response.data[0].currencyName || country[beforeCountry.value][1];
     exchangeBeforeUnit.textContent = country[beforeCountry.value][1];
   } catch (error) {
     console.log(error);
@@ -100,7 +111,9 @@ const hotplaceRender = () => {
 
       response.data[0].signedChangeRate > 0
         ? hotplaceRatio.classList.toggle('exchange__ratio--red')
-        : hotplaceRatio.classList.toggle('exchange__ratio--blue');
+        : response.data[0].signedChangeRate < 0
+        ? hotplaceRatio.classList.toggle('exchange__ratio--blue')
+        : hotplaceRatio.classList.toggle('exchange__ratio--gray');
 
       hotplaceMoney.textContent = response.data[0].basePrice.toFixed(2);
       hotplaceRatio.textContent = option + (response.data[0].signedChangeRate * 100).toFixed(2) + '%';
@@ -110,4 +123,12 @@ const hotplaceRender = () => {
   });
 };
 
-export { country, beforeCountry, beforeMoney, invertExchangeRender, exchangeRender, hotplaceRender };
+export {
+  country,
+  beforeCountry,
+  beforeMoney,
+  invertExchangeRender,
+  forwardExchangeRender,
+  exchangeRender,
+  hotplaceRender,
+};
