@@ -63,6 +63,81 @@
           </li>
         </ul>
         <ul class="expense__list"></ul>
+        <div class="modal-bg active">
+          <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+            <h3 id="modalTitle" class="a11y-hidden">여행 추가</h3>
+            <button type="button" class="button button-close-modal" aria-label="모달 닫기" title="모달 닫기">
+              <span aria-hidden="true">×</span>
+            </button>
+            <form action="" class="modal__form">
+              <fieldset>
+                <legend class="a11y-hidden">지출 정보 입력</legend>
+                <div class="input-wrap">
+                  <label>카테고리</label>
+                  <ul class="modal-category">
+                    <li class="modal-category__item">
+                      <input type="radio" id="meal" name="category" class="modal-category__button meal" checked></input>
+                      <label for="meal" class="modal-category__text">식비</label >
+                    </li>
+                    <li class="modal-category__item">
+                      <input type="radio" id="shopping" name="category" class="modal-category__button shopping"></input>
+                      <label for="shopping" class="modal-category__text">쇼핑</label>
+                    </li>
+                    <li class="modal-category__item">
+                      <input type="radio" id="tour" name="category" class="modal-category__button tour"></input>
+                      <label for="tour" class="modal-category__text">관광</label>
+                    </li>
+                    <li class="modal-category__item">
+                      <input type="radio" id="traffic" name="category" class="modal-category__button traffic"></input>
+                      <label for="traffic" class="modal-category__text">교통</label>
+                    </li>
+                    <li class="modal-category__item">
+                      <input type="radio" id="accommodation" name="category" class="modal-category__button accommodation"></input>
+                      <label for="accommodation" class="modal-category__text">숙박</label>
+                    </li>
+                    <li class="modal-category__item">
+                      <input type="radio" id="etc" name="category" class="modal-category__button etc"></input>
+                      <label for="etc" class="modal-category__text">기타</label>
+                    </li>
+                  </ul>
+                </div>
+                <div class="input-wrap">
+                  <label>결제수단</label>
+                  <ul class="modal-paymentMethod">
+                    <li class="modal-paymentMethod__item">
+                      <input type="radio" id="cash" name="paymentMethod" class="modal-paymentMethod__button cash" checked></input>
+                      <label for="cash" class="modal-paymentMethod__text">현금</label>
+                    </li>
+                    <li class="modal-paymentMethod__item">
+                      <input type="radio" id="card" name="paymentMethod" class="modal-paymentMethod__button card"></input>
+                      <label for="card" class="modal-paymentMethod__text">카드</label>
+                    </li>
+                  </ul>
+                </div>
+                <div class="input-date">
+                  <div class="input-wrap">
+                    <label>결제수단</label>
+                    <input type="text" readonly />
+                  </div>
+                  <span>~</span>
+                  <div class="input-wrap">
+                    <label>여행종료일</label>
+                    <input type="text" readonly />
+                  </div>
+                </div>
+                <div class="input-wrap">
+                  <label>총 예산</label>
+                  <div class="input-money">
+                    <input placeholder="원화로 입력해주세요" />
+                    <span class="input-money__unit">원</span>
+                  </div>
+                  <p class="input-wrap__guide">현재 환율로 약 <b>300달러</b> 입니다.</p>
+                </div>
+              </fieldset>
+            </form>
+            <button type="submit" class="button--submit">만들기</button>
+          </div>
+        </div>
       </main>
       <nav>common component 삽입 예정</nav>
     </div>

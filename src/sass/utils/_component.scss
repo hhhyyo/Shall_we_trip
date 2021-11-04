@@ -7,7 +7,7 @@
   flex-direction: column;
   font-size: rem(20px);
 
-  label {
+  & > label {
     padding-left: rem(14px);
     margin-bottom: rem(16px);
     font-size: inherit;

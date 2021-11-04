@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // MOCK 데이터
-const expenses = [
+let expenses = [
   {
     expenseId: 1,
     tripId: 2,
@@ -31,6 +31,33 @@ const expenses = [
     cost: 34,
     date: '2021-10-31 13:18',
   },
+  {
+    expenseId: 4,
+    tripId: 2,
+    title: '차비',
+    category: 'traffic',
+    paymentMethod: '현금',
+    cost: 45,
+    date: '2021-10-31 13:18',
+  },
+  {
+    expenseId: 5,
+    tripId: 2,
+    title: '박물관',
+    category: 'tour',
+    paymentMethod: '현금',
+    cost: 20,
+    date: '2021-10-26 13:18',
+  },
+  {
+    expenseId: 6,
+    tripId: 2,
+    title: '호텔',
+    category: 'accommodation',
+    paymentMethod: '카드',
+    cost: 34,
+    date: '2021-10-31 13:18',
+  },
 ];
 
 router.get('/', (req, res) => {
@@ -40,6 +67,13 @@ router.get('/', (req, res) => {
   expensesList = category ? expensesList.filter(expense => expense.category === category) : expensesList;
 
   res.send(expensesList);
+});
+
+router.post('/', (req, res) => {
+  const newExpense = req.body;
+  expenses = [newExpense, ...expenses];
+
+  res.send(expenses);
 });
 
 module.exports = router;
