@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const country = {
   미국: ['USD', '달러'],
-  일본: ['JPY', '100엔'],
+  일본: ['JPY', '엔'],
   유럽연합: ['EUR', '유로'],
   중국: ['CNY', '위안'],
   홍콩: ['HKD', '달러'],
@@ -11,7 +11,7 @@ const country = {
   필리핀: ['PHP', '페소'],
   싱가포르: ['SGD', '달러'],
   호주: ['AUD', '달러'],
-  베트남: ['VND', '100동'],
+  베트남: ['VND', '동'],
   영국: ['GBP', '파운드'],
   캐나다: ['CAD', '달러'],
   말레이시아: ['MYR', '링기트'],
@@ -37,7 +37,7 @@ const country = {
   이스라엘: ['ILS', '셰켈'],
   이집트: ['EGP', '파운드'],
   인도: ['INR', '루피'],
-  인도네시아: ['IDR', '100루피아'],
+  인도네시아: ['IDR', '루피아'],
   체코: ['CZK', '코루나'],
   칠레: ['CLP', '페소'],
   카자흐스탄: ['KZT', '텡게'],
@@ -58,24 +58,34 @@ const exchangeBeforeUnit = document.querySelector('.exchange__section--before--u
 const afterMoney = document.querySelector('.exchange__section--after--moneyinput');
 const hotplaceWrap = document.querySelectorAll('.exchange__hotplace--detail--wrap');
 
-// 원 -> 외화
+// 원화(10.4원) -> 외화(1엔)
 const invertExchangeRender = async (money, inCountry) => {
   const apiURL = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${country[inCountry][0]}`;
   try {
     const response = await axios.get(apiURL);
-    const exchangeMoney = (money / response.data[0].basePrice).toFixed(2);
+    let exchangeMoney = 0;
+    if (inCountry === '일본' || inCountry === '베트남' || inCountry === '인도네시아') {
+      exchangeMoney = ((money / response.data[0].basePrice) * 100).toFixed(2);
+    } else {
+      exchangeMoney = (money / response.data[0].basePrice).toFixed(2);
+    }
     return exchangeMoney;
   } catch (error) {
     console.log(error);
   }
 };
 
-// 외화 -> 원
+// 외화(1엔) -> 원화(10.4원)
 const forwardExchangeRender = async (money, inCountry) => {
   const apiURL = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${country[inCountry][0]}`;
   try {
     const response = await axios.get(apiURL);
-    const exchangeMoney = (money * response.data[0].basePrice).toFixed(2);
+    let exchangeMoney = 0;
+    if (inCountry === '일본' || inCountry === '베트남' || inCountry === '인도네시아') {
+      exchangeMoney = ((money * response.data[0].basePrice) / 100).toFixed(2);
+    } else {
+      exchangeMoney = (money * response.data[0].basePrice).toFixed(2);
+    }
     return exchangeMoney;
   } catch (error) {
     console.log(error);
@@ -86,7 +96,11 @@ const exchangeRender = async () => {
   const apiURL = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${country[beforeCountry.value][0]}`;
   try {
     const response = await axios.get(apiURL);
-    afterMoney.value = (beforeMoney.value * response.data[0].basePrice).toFixed(2);
+    if (beforeCountry.value === '일본' || beforeCountry.value === '베트남' || beforeCountry.value === '인도네시아') {
+      afterMoney.value = ((beforeMoney.value * response.data[0].basePrice) / 100).toFixed(2);
+    } else {
+      afterMoney.value = (beforeMoney.value * response.data[0].basePrice).toFixed(2);
+    }
     exchangeBeforeUnit.textContent = country[beforeCountry.value][1];
   } catch (error) {
     console.log(error);
@@ -105,8 +119,15 @@ const hotplaceRender = () => {
 
     try {
       const response = await axios.get(apiURL);
-      hotplaceMoney.textContent = response.data[0].basePrice.toFixed(2);
-      // 양수라면 앞에 + 붙이고 class 빨간색 붙이고
+      if (
+        hotplaceCountry.textContent === '일본' ||
+        hotplaceCountry.textContent === '베트남' ||
+        hotplaceCountry.textContent === '인도네시아'
+      ) {
+        hotplaceMoney.textContent = ((beforeMoney.value * response.data[0].basePrice) / 100).toFixed(2);
+      } else {
+        hotplaceMoney.textContent = (beforeMoney.value * response.data[0].basePrice).toFixed(2);
+      }
       const option = response.data[0].signedChangeRate > 0 ? '+' : '';
 
       response.data[0].signedChangeRate > 0
@@ -115,7 +136,6 @@ const hotplaceRender = () => {
         ? hotplaceRatio.classList.toggle('exchange__ratio--blue')
         : hotplaceRatio.classList.toggle('exchange__ratio--gray');
 
-      hotplaceMoney.textContent = response.data[0].basePrice.toFixed(2);
       hotplaceRatio.textContent = option + (response.data[0].signedChangeRate * 100).toFixed(2) + '%';
     } catch (error) {
       console.log(error);
