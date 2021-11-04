@@ -56,9 +56,9 @@ router.post('/', (req, res) => {
 router.post('/auth', (req, res) => {
   const { email, password } = req.body;
   const user = [...users].find(user => user.email === email && user.password === password);
-  const { userId } = user;
 
-  if (!user) return res.status(401).send({ error: '등록되지 않은 사용자입니다.' });
+  if (!user) return res.status(401).send({ error: '입력하신 정보가 올바르지 않습니다.' });
+  const { userId } = user;
 
   const accessToken = jwt.sign({ userId }, process.env.JWT_SECRET_KEY, {
     expiresIn: '1d',

@@ -41,53 +41,28 @@
         </div>
         <ul class="category">
           <li class="category__item category__all">
-            <button class="category__button category__button--selected">All</button>
+            <button class="category__button category__button--selected" data-category="">All</button>
           </li>
           <li class="category__item category__meal">
-            <button class="category__button">식비</button>
+            <button class="category__button" data-category="meal">식비</button>
           </li>
           <li class="category__item category__shopping">
-            <button class="category__button">쇼핑</button>
+            <button class="category__button" data-category="shopping">쇼핑</button>
           </li>
           <li class="category__item category__tour">
-            <button class="category__button">관광</button>
+            <button class="category__button" data-category="tour">관광</button>
           </li>
           <li class="category__item category__traffic">
-            <button class="category__button">교통</button>
+            <button class="category__button" data-category="traffic">교통</button>
           </li>
           <li class="category__item category__accommodation">
-            <button class="category__button">숙박</button>
+            <button class="category__button" data-category="accommodation">숙박</button>
           </li>
           <li class="category__item category__etc">
-            <button class="category__button">기타</button>
+            <button class="category__button" data-category="etc">기타</button>
           </li>
         </ul>
-        <ul class="expense__list">
-          <li class="area">
-            <a href="#" role="button" class="expense__item accommodation">
-              <div class="expense__info">
-                <h3 class="expense__title">구찌백</h3>
-                <span class="expense__date">10/31 1:18</span>
-              </div>
-              <div class="expense__detail">
-                <b class="expense__cost">-50 달러</b>
-                <span class="expense__payment-method">현금</span>
-              </div>
-            </a>
-          </li>
-          <li class="area">
-            <a href="#" role="button" class="expense__item etc">
-              <div class="expense__info">
-                <h3 class="expense__title">밀크쉐이크, 감튀</h3>
-                <span class="expense__date">10/31 1:18</span>
-              </div>
-              <div class="expense__detail">
-                <b class="expense__cost">-24 달러</b>
-                <span class="expense__payment-method">카드</span>
-              </div>
-            </a>
-          </li>
-        </ul>
+        <ul class="expense__list"></ul>
       </main>
       <nav>common component 삽입 예정</nav>
     </div>

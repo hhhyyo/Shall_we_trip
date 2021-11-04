@@ -11,6 +11,7 @@ $form.oninput = e => {
     e.target.name !== 'confirmPassword' ? isValid(inputName, e.target.value) : isSamePassowrd(e.target.value);
 
   $inputError.classList.toggle('active', !inputName.validate);
+  $inputError.classList.remove('correct');
   $inputError.textContent = inputName.validate ? '' : inputName.errorMessage;
 
   if (e.target.matches('.sign-up #userEmail')) e.target.nextElementSibling.disabled = !inputName.validate;
