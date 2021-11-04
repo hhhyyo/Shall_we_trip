@@ -158,11 +158,13 @@
         }
       }
       &--ratio {
+        width: rem(80px);
         margin-top: rem(10px);
         padding: rem(8px) rem(4px);
         border-radius: rem(8px);
         color: white;
         @include desktop {
+          width: rem(120px);
           margin-top: rem(14px);
           padding: rem(10px) rem(6px);
           border-radius: rem(12px);
