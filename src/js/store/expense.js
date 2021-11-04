@@ -70,7 +70,8 @@ const fetchTripInfo = async () => {
     setTrip(trip.data);
     setExpenses(expenses.data);
   } catch (error) {
-    console.error(error);
+    window.alert('접근 권한이 없는 페이지입니다.');
+    window.location.href = '/';
   }
 };
 

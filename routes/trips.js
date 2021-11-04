@@ -21,7 +21,7 @@ let trips = [
   },
   {
     tripId: 2,
-    userId: 13,
+    userId: 3,
     country: '일본',
     title: '즐거운 여행',
     budget: 500,
@@ -79,7 +79,9 @@ router.get('/', (req, res) => {
 // GET /trips/id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  const trip = trips.filter(trip => trip.tripId === +id)[0];
+  const trip = trips.find(trip => trip.tripId === +id);
+
+  if (trip.userId !== req.userId) res.status(401);
 
   res.send(trip);
 });
