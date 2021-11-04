@@ -47,9 +47,7 @@ router.post('/', (req, res) => {
   const newUser = { userId: generateId(), userName, phoneNumber, nickname, email, password };
   users = [...users, newUser];
 
-  const result = { message: 'user created' };
-
-  res.send(result);
+  res.send();
 });
 
 // POST /api/users/auth
@@ -58,7 +56,7 @@ router.post('/auth', (req, res) => {
   const user = [...users].find(user => user.email === email && user.password === password);
 
   if (!user) return res.status(401).send({ error: '입력하신 정보가 올바르지 않습니다.' });
-  const { userId } = user;
+  const { userId, nickname } = user;
 
   const accessToken = jwt.sign({ userId }, process.env.JWT_SECRET_KEY, {
     expiresIn: '1d',
@@ -71,7 +69,13 @@ router.post('/auth', (req, res) => {
   });
 
   // 로그인 성공
-  res.send({ email, userId });
+  res.send({ email, userId, nickname });
+});
+
+// POST /api/users/signout
+router.post('/signout', (req, res) => {
+  res.clearCookie('accessToken');
+  res.send();
 });
 
 module.exports = router;
