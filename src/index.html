@@ -9,6 +9,46 @@
   <body>
     <div class="container">
       <h1 class="a11y-hidden">Shall We Trip?</h1>
+      <!-- 공통 메뉴 ---------------------------------------->
+      <nav class="commonMenu">
+        <ul class="commonMenu__listwrap">
+          <li class="commonMenu__list commonMenu__exchange active">
+            <a href="/" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-calculator"></i>
+              <p class="commonMenu__text">환율</p>
+            </a>
+          </li>
+          <li class="commonMenu__list commonMenu__trips-container commonMenu__expense-main">
+            <a href="/trip-list" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-book"></i>
+              <p class="commonMenu__text">여행리스트</p>
+            </a>
+          </li>
+          <li class="commonMenu__list">
+            <button class="commonMenu__item">
+              <div class="commonMenu__add"><img class="commonMenu__add--img" src="assets/images/addTrip.png" /></div>
+              <p class="commonMenu__text commonMenu__add--text">여행추가</p>
+            </button>
+          </li>
+          <li class="commonMenu__list commonMenu__chart unimplemented">
+            <a href="#" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-pie-chart-alt-2"></i>
+              <p class="commonMenu__text">통계</p>
+            </a>
+          </li>
+          <li class="commonMenu__list commonMenu__setting" data-page="setting">
+            <button class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-cog"></i>
+              <p class="commonMenu__text">설정</p>
+            </button>
+          </li>
+        </ul>
+        <ul class="commonMenu__setwrap">
+          <li>
+            <a href="#" class="commonMenu__logout"><i class="commonMenu__logout--icon bx bx-log-out"></i> 로그아웃</a>
+          </li>
+        </ul>
+      </nav>
       <main class="exchange">
         <h2 class="exchange__header">환율 계산기</h2>
         <div class="exchange__section">
@@ -160,46 +200,6 @@
           </div>
         </div> -->
       </main>
-      <!-- 공통 메뉴 ---------------------------------------->
-      <nav class="commonMenu">
-        <ul class="commonMenu__listwrap">
-          <li class="commonMenu__list commonMenu__exchange">
-            <a href="/" class="commonMenu__item">
-              <i class="commonMenu__icon bx bx-calculator"></i>
-              <p class="commonMenu__text">환율</p>
-            </a>
-          </li>
-          <li class="commonMenu__list commonMenu__trip-list">
-            <a href="/trip-list" class="commonMenu__item">
-              <i class="commonMenu__icon bx bx-book"></i>
-              <p class="commonMenu__text">여행리스트</p>
-            </a>
-          </li>
-          <li class="commonMenu__list">
-            <button class="commonMenu__item">
-              <div class="commonMenu__add"><img class="commonMenu__add--img" src="assets/images/addTrip.png" /></div>
-              <p class="commonMenu__text commonMenu__add--text">여행추가</p>
-            </button>
-          </li>
-          <li class="commonMenu__list commonMenu__chart unimplemented">
-            <a href="#" class="commonMenu__item">
-              <i class="commonMenu__icon bx bx-pie-chart-alt-2"></i>
-              <p class="commonMenu__text">통계</p>
-            </a>
-          </li>
-          <li class="commonMenu__list commonMenu__setting" data-page="setting">
-            <button class="commonMenu__item">
-              <i class="commonMenu__icon bx bx-cog"></i>
-              <p class="commonMenu__text">설정</p>
-            </button>
-          </li>
-        </ul>
-        <ul class="commonMenu__setwrap">
-          <li>
-            <a href="#" class="commonMenu__logout"><i class="commonMenu__logout--icon bx bx-log-out"></i> 로그아웃</a>
-          </li>
-        </ul>
-      </nav>
     </div>
   </body>
 </html>
