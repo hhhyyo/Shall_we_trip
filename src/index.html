@@ -18,16 +18,16 @@
               <p class="commonMenu__text">환율</p>
             </a>
           </li>
-          <li class="commonMenu__list commonMenu__trips-container commonMenu__expense-main">
+          <li class="commonMenu__list commonMenu__trip-list">
             <a href="/trip-list" class="commonMenu__item">
               <i class="commonMenu__icon bx bx-book"></i>
               <p class="commonMenu__text">여행리스트</p>
             </a>
           </li>
           <li class="commonMenu__list">
-            <button class="commonMenu__item">
-              <div class="commonMenu__add"><img class="commonMenu__add--img" src="assets/images/addTrip.png" /></div>
-              <p class="commonMenu__text commonMenu__add--text">여행추가</p>
+            <button class="commonMenu__item add-trip" type="button">
+              <span class="commonMenu__add"></span>
+              <span class="commonMenu__text commonMenu__add--text">여행추가</span>
             </button>
           </li>
           <li class="commonMenu__list commonMenu__chart unimplemented">
@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="commonMenu__list commonMenu__setting" data-page="setting">
-            <button class="commonMenu__item">
+            <button type="button" class="commonMenu__item">
               <i class="commonMenu__icon bx bx-cog"></i>
               <p class="commonMenu__text">설정</p>
             </button>
@@ -58,8 +58,8 @@
               <input class="exchange__input exchange__section--before--countryinput" type="text" value="미국" />
               <!-- <label for="before" class="a11y-hidden">바꿀 화폐를 선택해주세요</label>
               <select name="before__country" id="before">
-                <option value="미국" selected>미국 USD</option>
-                <option value="일본">일본 JPY</option>
+                <option value="미국" selected>미국</option>
+                <option value="일본">일본</option>
               </select> -->
             </div>
             <div class="exchange__section--before--moneywrap">
@@ -90,7 +90,12 @@
             </div>
             <div class="exchange__section--after--moneywrap">
               <div class="exchange__section--after--money">
-                <input class="exchange__input exchange__section--after--moneyinput" type="number" value="1170" />
+                <input
+                  class="exchange__input exchange__section--after--moneyinput"
+                  type="number"
+                  value="1170"
+                  readonly
+                />
               </div>
               <div class="exchange__section--after--unit">원</div>
             </div>

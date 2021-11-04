@@ -7,10 +7,11 @@ const $signInForm = document.querySelector('.sign-in form');
 const request = async e => {
   e.preventDefault();
   try {
-    await axios.post('/api/users/auth', {
+    const { data } = await axios.post('/api/users/auth', {
       email: e.target.email.value,
       password: e.target.password.value,
     });
+    localStorage.setItem('nickname', data.nickname);
     window.location.href = '/';
   } catch (e) {
     alert('입력하신 정보가 올바르지 않습니다.');

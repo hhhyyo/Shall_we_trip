@@ -241,10 +241,10 @@ html {
 
   // 로그아웃
   &__setwrap {
-    position: fixed;
+    display: none;
+    position: absolute;
     right: rem(10px);
     bottom: rem(100px);
-    opacity: 0;
     color: white;
     background: rgba(0, 0, 0, 0.8);
     border-radius: rem(20px);
@@ -255,7 +255,7 @@ html {
     }
 
     &.opacityChange {
-      opacity: 1;
+      display: block;
     }
   }
   &__logout {
@@ -271,4 +271,8 @@ html {
       color: red;
     }
   }
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }

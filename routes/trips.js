@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(auth);
 
 // MOCK 데이터
-const trips = [
+let trips = [
   {
     tripId: 1,
     userId: 13,
@@ -21,13 +21,13 @@ const trips = [
   },
   {
     tripId: 2,
-    userId: 13,
+    userId: 3,
     country: '일본',
     title: '즐거운 여행',
     budget: 500,
     cashTotal: 50,
     cardTotal: 400,
-    currency: '달러',
+    currency: '엔',
     startDate: '2020-11-03',
     endDate: '2020-12-10',
   },
@@ -79,7 +79,18 @@ router.get('/', (req, res) => {
 // GET /trips/id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  const trip = trips.filter(trip => trip.tripId === +id);
+  const trip = trips.find(trip => trip.tripId === +id);
+
+  if (trip.userId !== req.userId) res.status(401);
+
+  res.send(trip);
+});
+
+router.patch('/:id', (req, res) => {
+  const { id } = req.params;
+
+  trips = trips.map(trip => (trip.tripId === +id ? { ...trip, ...req.body } : trip));
+  const trip = trips.find(trip => trip.tripId === +id);
 
   res.send(trip);
 });

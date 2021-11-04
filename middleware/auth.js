@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
     console.log(`😀 사용자 인증 성공`, decoded);
 
     req.userId = decoded.userId;
-    
+
     next();
   } catch (e) {
     console.error('😱 사용자 인증 실패..', e);

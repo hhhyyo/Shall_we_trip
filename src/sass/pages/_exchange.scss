@@ -14,8 +14,11 @@
 
   &__input {
     font-size: rem(18px);
-    border: none;
-    background-color: $light-yellow;
+    border-radius: rem(20px);
+    border: 0;
+    padding: rem(16px);
+    background-color: #fefaef;
+    width: 100%;
     @include desktop {
       font-size: rem(24px);
     }
@@ -38,7 +41,7 @@
       &--country {
         background-color: $light-yellow;
         border-radius: rem(18px);
-        padding: rem(16px);
+        // padding: rem(16px);
         margin: rem(12px) rem(18px);
       }
       &--moneywrap {
@@ -47,7 +50,7 @@
       &--money {
         background-color: $light-yellow;
         border-radius: rem(18px);
-        padding: rem(16px);
+        // padding: rem(16px);
         margin: rem(12px) rem(18px);
         width: 80%;
       }
@@ -155,11 +158,13 @@
         }
       }
       &--ratio {
+        width: rem(80px);
         margin-top: rem(10px);
         padding: rem(8px) rem(4px);
         border-radius: rem(8px);
         color: white;
         @include desktop {
+          width: rem(120px);
           margin-top: rem(14px);
           padding: rem(10px) rem(6px);
           border-radius: rem(12px);
@@ -172,10 +177,14 @@
       &--ratio.exchange__ratio--blue {
         background: blue;
       }
+      &--ratio.exchange__ratio--gray {
+        background: gray;
+      }
     }
   }
   // FIXME: 추후 나라 변경 가능하도록, html에도 readonly제거.
-  &__section--after--countryinput {
+  &__section--after--countryinput,
+  &__section--after--moneyinput {
     outline: none;
   }
 }

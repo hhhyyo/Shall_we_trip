@@ -1,3 +1,4 @@
+import flatpickr from 'flatpickr';
 import { parsePeriod } from '../utils/helper';
 
 const $tripTitle = document.querySelector('.trip__title');
@@ -7,6 +8,13 @@ const $budgetRestCost = document.querySelector('.budget__rest-cost');
 const $expenseTotalCost = document.querySelector('.expense__total-cost');
 const $expenseCashCost = document.querySelector('.expense__cash-cost');
 const $expenseCardCost = document.querySelector('.expense__card-cost');
+
+const $date = document.getElementById('date');
+
+flatpickr($date, {
+  enableTime: true,
+  dateFormat: 'Y-m-d H:i',
+});
 
 const renderTrip = ({ title, budget, cashTotal, cardTotal, currency, startDate, endDate }) => {
   const totalCost = cashTotal + cardTotal;
@@ -25,17 +33,17 @@ const renderExpenses = (expenses, currency) => {
     .map(
       ({ title, category, paymentMethod, cost, date }) =>
         `<li class="area">
-        <a href="#" role="button" class="expense__item ${category}">
-          <div class="expense__info">
-            <h3 class="expense__title">${title}</h3>
-            <span class="expense__date">${date}</span>
+          <div class="expense__item ${category}">
+            <div class="expense__info">
+              <h3 class="expense__title">${title}</h3>
+              <span class="expense__date">${date}</span>
+            </div>
+            <div class="expense__detail">
+              <b class="expense__cost">-${cost} ${currency}</b>
+              <span class="expense__payment-method">${paymentMethod}</span>
+            </div>
           </div>
-          <div class="expense__detail">
-            <b class="expense__cost">-${cost} ${currency}</b>
-            <span class="expense__payment-method">${paymentMethod}</span>
-          </div>
-        </a>
-      </li>`
+        </li>`
     )
     .join('');
 };
