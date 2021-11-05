@@ -1,5 +1,4 @@
 import axios from 'axios';
-import suggestions from './suggestion';
 
 const country = {
   미국: ['USD', '달러'],
@@ -59,10 +58,6 @@ const exchangeBeforeUnit = document.querySelector('.exchange__section--before--u
 const afterMoney = document.querySelector('.exchange__section--after--moneyinput');
 const hotplaceWrap = document.querySelectorAll('.exchange__hotplace--detail--wrap');
 
-// 자동완성
-const searchWrapper = document.querySelector('.exchange__section--before');
-const suggBox = document.querySelector('.exchange__input--autocom-box');
-
 // 원화(10.4원) -> 외화(1엔)
 const invertExchangeRender = async (money, inCountry) => {
   const apiURL = `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW${country[inCountry][0]}`;
@@ -111,32 +106,6 @@ const exchangeRender = async () => {
     console.log(error);
   }
 };
-
-beforeCountry.addEventListener('keyup', e => {
-  const userData = e.target.value;
-  let emptyArr = [];
-
-  if (userData) {
-    emptyArr = suggestions.filter(data => data.match(userData));
-    emptyArr = emptyArr.map(data => `<li>${data}</li>`);
-    searchWrapper.classList.add('active');
-    // showSuggestions(emptyArr);
-    suggBox.innerHTML = emptyArr.join('');
-    [...suggBox.querySelectorAll('li')].forEach(el => {
-      el.addEventListener('click', e => {
-        if (!el === e.target) return;
-        console.log(e.target.textContent);
-        beforeCountry.value = e.target.textContent;
-        searchWrapper.classList.remove('active');
-        exchangeRender();
-      });
-    });
-  } else {
-    searchWrapper.classList.remove('active');
-  }
-  console.log(emptyArr);
-  if (e.key === 'Enter') searchWrapper.classList.remove('active');
-});
 
 const hotplaceRender = () => {
   [...hotplaceWrap].forEach(async el => {
