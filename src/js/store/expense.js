@@ -92,7 +92,7 @@ const addExpense = async newExpense => {
         ? { cashTotal: +newExpense.cost + state.trip.cashTotal }
         : { cardTotal: +newExpense.cost + state.trip.cardTotal };
 
-    const [expenses, trip] = await Promise.all([
+    const [, trip] = await Promise.all([
       axios.post(`/api/expenses`, {
         tripId: state.trip.tripId,
         ...newExpense,
