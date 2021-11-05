@@ -6,6 +6,12 @@ let emailCheckState = false;
 
 const $signUpForm = document.querySelector('.sign-up form');
 
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.body.style.opacity = 1;
+  }, 300);
+});
+
 const request = async e => {
   try {
     await axios.post('/api/users', {

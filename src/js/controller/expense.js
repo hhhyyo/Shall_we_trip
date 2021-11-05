@@ -18,7 +18,12 @@ const $cost = document.getElementById('cost');
 const $inputMoneyUnit = document.querySelector('.input-money__unit');
 const $inputWrapGuide = document.querySelector('.input-wrap__guide');
 
-document.addEventListener('DOMContentLoaded', fetchTripInfo);
+document.addEventListener('DOMContentLoaded', () => {
+  fetchTripInfo();
+  setTimeout(() => {
+    document.body.style.opacity = 1;
+  }, 300);
+});
 
 $addExpense.onclick = () => {
   $commonMenu.classList.add('a11y-hidden');

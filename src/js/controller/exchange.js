@@ -8,6 +8,9 @@ window.addEventListener('DOMContentLoaded', () => {
   exchangeRender();
   hotplaceRender();
 
+  setTimeout(() => {
+    document.body.style.opacity = 1;
+  }, 300);
   // console.log(await invertExchangeRender(10.4, '일본'));
   // console.log(await forwardExchangeRender(1, '일본'));
 });
