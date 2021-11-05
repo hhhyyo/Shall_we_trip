@@ -24,7 +24,7 @@ module.exports = {
     // 번들링된 JS 파일을 html 파일에 자동 추가해주는 플러그인
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunks: ['index', 'exchange', 'navigation'],
+      chunks: ['index', 'exchange', 'navigation', 'tripList'],
     }),
     new HtmlWebpackPlugin({
       filename: 'signup.html',

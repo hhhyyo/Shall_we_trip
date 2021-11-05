@@ -4,6 +4,12 @@ import { getInputName } from '../store/sign';
 
 const $signInForm = document.querySelector('.sign-in form');
 
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.body.style.opacity = 1;
+  }, 300);
+});
+
 const request = async e => {
   e.preventDefault();
   try {

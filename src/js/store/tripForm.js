@@ -34,5 +34,9 @@ const formData = {
 const getInputName = name => formData[name];
 const isValid = (inputName, inputValue) => inputName.check(inputValue);
 const isSubmit = allInputOfForm => [...allInputOfForm].every(inputType => formData[inputType.name].validate);
+const resetFormData = allInputOfForm =>
+  [...allInputOfForm].forEach(inputType => {
+    formData[inputType.name].validate = false;
+  });
 
-export { getInputName, isValid, isSubmit };
+export { getInputName, isValid, isSubmit, resetFormData };
