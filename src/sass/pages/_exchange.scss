@@ -53,8 +53,8 @@
         cursor: default;
         // display: none;
 
-        &::hover {
-          background: gray;
+        &:hover {
+          cursor: pointer;
         }
       }
     }

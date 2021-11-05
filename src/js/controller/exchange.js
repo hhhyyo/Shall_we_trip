@@ -19,7 +19,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 exchangeSection.addEventListener('change', () => {
   if (!Object.keys(country).includes(beforeCountry.value) && beforeMoney) return;
-  console.log('test');
   exchangeRender();
 });
 
@@ -36,7 +35,6 @@ beforeCountry.addEventListener('keyup', e => {
     [...suggBox.querySelectorAll('li')].forEach(el => {
       el.addEventListener('click', e => {
         if (!el === e.target) return;
-        console.log(e.target.textContent);
         beforeCountry.value = e.target.textContent;
         searchWrapper.classList.remove('active');
         exchangeRender();
@@ -45,6 +43,5 @@ beforeCountry.addEventListener('keyup', e => {
   } else {
     searchWrapper.classList.remove('active');
   }
-  console.log(emptyArr);
   if (e.key === 'Enter') searchWrapper.classList.remove('active');
 });
