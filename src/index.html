@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>환율 계산기</title>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/light.css" />
   </head>
   <body>
     <div class="container">
@@ -176,47 +177,44 @@
           </ul>
         </div>
         <!-- 모달--------------------------------------- -->
-        <!-- <div class="modal-bg active">
+        <div class="modal-bg notransition">
           <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
             <h3 id="modalTitle" class="a11y-hidden">여행 추가</h3>
             <button type="button" class="button button-close-modal" aria-label="모달 닫기" title="모달 닫기">
               <span aria-hidden="true">×</span>
             </button>
-            <form action="" class="modal__form">
+            <form action="" id="tripInfoForm" class="modal__form">
               <fieldset>
                 <legend class="a11y-hidden">여행 정보 입력</legend>
                 <div class="input-wrap">
-                  <label>여행할나라</label>
-                  <input />
+                  <label for="countryInput">여행할나라</label>
+                  <input id="countryInput" name="countryName" placeholder="한글로 입력해주세요." autocomplete="off" />
+                  <p class="input--error"></p>
                 </div>
                 <div class="input-wrap">
-                  <label>제목</label>
-                  <input placeholder="20글자 이내로 입력해주세요." />
-                </div>
-                <div class="input-date">
-                  <div class="input-wrap">
-                    <label>여행시작일</label>
-                    <input type="text" readonly />
-                  </div>
-                  <span>~</span>
-                  <div class="input-wrap">
-                    <label>여행종료일</label>
-                    <input type="text" readonly />
-                  </div>
+                  <label for="titleInput">제목</label>
+                  <input id="titleInput" name="title" placeholder="20글자 이내로 입력해주세요." autocomplete="off" />
+                  <p class="input--error"></p>
                 </div>
                 <div class="input-wrap">
-                  <label>총 예산</label>
+                  <label for="periodInput">여행기간</label>
+                  <input id="periodInput" name="period" readonly />
+                  <p class="input--error"></p>
+                </div>
+                <div class="input-wrap">
+                  <label for="budgetInput">총 예산</label>
                   <div class="input-money">
-                    <input placeholder="원화로 입력해주세요" />
+                    <input id="budgetInput" name="budget" placeholder="원화로 입력해주세요" autocomplete="off" />
                     <span class="input-money__unit">원</span>
                   </div>
-                  <p class="input-wrap__guide">현재 환율로 약 <b>300달러</b> 입니다.</p>
+                  <p class="input-wrap__guide">현재 환율로 약 <b class="basic"></b> 입니다.</p>
+                  <p class="input--error"></p>
                 </div>
               </fieldset>
             </form>
-            <button type="submit" class="button--submit">만들기</button>
+            <button type="submit" class="button--submit" form="tripInfoForm" disabled>만들기</button>
           </div>
-        </div> -->
+        </div>
       </main>
     </div>
   </body>
