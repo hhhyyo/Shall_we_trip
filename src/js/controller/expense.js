@@ -1,4 +1,5 @@
-import { fetchTripInfo, setExpensesFilter, getCurreny, getCountry, addExpense } from '../store/expense';
+import { debounce } from 'lodash';
+import { fetchTripInfo, fetchExpenses, setExpensesFilter, getCurreny, getCountry, addExpense } from '../store/expense';
 import { getNow } from '../utils/helper';
 import { forwardExchangeRender } from '../view/exchange';
 
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', fetchTripInfo);
 $addExpense.onclick = () => {
   $commonMenu.classList.add('a11y-hidden');
   $modalBg.classList.add('active');
+  $modalBg.classList.remove('notransition');
   $body.classList.add('overflow-hidden');
   $date.value = getNow();
   $inputMoneyUnit.textContent = getCurreny();
@@ -34,6 +36,7 @@ $category.onclick = ({ target }) => {
   [...document.querySelectorAll('.category__button')].forEach($el => {
     $el.classList.toggle('category__button--selected', $el === target);
   });
+  document.querySelector('.expense__list').innerHTML = '';
 
   setExpensesFilter(target.dataset.category);
 };
@@ -63,12 +66,13 @@ $modalForm.onsubmit = e => {
     date: e.target.date.value,
   };
 
+  document.querySelector('.expense__list').innerHTML = '';
   addExpense(expense);
   resetForm();
   $category.scrollIntoView();
 };
 
-$cost.oninput = async e => {
+$cost.oninput = debounce(async e => {
   try {
     $cost.value = $cost.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
     const country = getCountry();
@@ -78,4 +82,8 @@ $cost.oninput = async e => {
   } catch (error) {
     console.error(error);
   }
-};
+}, 300);
+
+window.onscroll = debounce(() => {
+  if (window.scrollY + window.innerHeight === document.body.offsetHeight) fetchExpenses();
+}, 700);

@@ -29,7 +29,7 @@ const renderTrip = ({ title, budget, cashTotal, cardTotal, currency, startDate, 
 };
 
 const renderExpenses = (expenses, currency) => {
-  document.querySelector('.expense__list').innerHTML = expenses
+  document.querySelector('.expense__list').innerHTML += expenses
     .map(
       ({ title, category, paymentMethod, cost, date }) =>
         `<li class="area">

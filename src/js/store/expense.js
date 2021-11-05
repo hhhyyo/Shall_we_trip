@@ -15,6 +15,7 @@ const state = {
     endDate: '',
   },
   expenses: {
+    currentIndex: 0,
     filter: '',
     list: [],
   },
@@ -36,10 +37,12 @@ const fetchExpenses = async () => {
   try {
     const { data } = await axios.get(`/api/expenses`, {
       params: {
+        currentIndex: state.expenses.currentIndex,
         category: state.expenses.filter,
         tripId: state.trip.tripId,
       },
     });
+    state.expenses.currentIndex += 4;
 
     setExpenses(data);
   } catch (error) {
@@ -49,6 +52,7 @@ const fetchExpenses = async () => {
 
 const setExpensesFilter = newFilter => {
   state.expenses.filter = newFilter;
+  state.expenses.currentIndex = 0;
 
   fetchExpenses();
 };
@@ -61,11 +65,13 @@ const fetchTripInfo = async () => {
       axios.get(`/api/trips/${tripId}`),
       axios.get(`/api/expenses`, {
         params: {
+          currentIndex: state.expenses.currentIndex,
           category: state.expenses.filter,
           tripId,
         },
       }),
     ]);
+    state.expenses.currentIndex += 4;
 
     setTrip(trip.data);
     setExpenses(expenses.data);
@@ -93,12 +99,12 @@ const addExpense = async newExpense => {
       }),
       axios.patch(`/api/trips/${state.trip.tripId}`, expense),
     ]);
-
-    setExpenses(expenses.data);
+    state.expenses.currentIndex = 0;
     setTrip(trip.data);
+    fetchExpenses();
   } catch (error) {
     console.error(error);
   }
 };
 
-export { setExpensesFilter, fetchTripInfo, getCurreny, addExpense, getCountry };
+export { setExpensesFilter, fetchTripInfo, fetchExpenses, getCurreny, addExpense, getCountry };
