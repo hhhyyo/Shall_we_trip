@@ -1,12 +1,5 @@
-import {
-  country,
-  beforeCountry,
-  beforeMoney,
-  exchangeRender,
-  hotplaceRender,
-  invertExchangeRender,
-  forwardExchangeRender,
-} from '../view/exchange';
+import country from '../store/country';
+import { beforeCountry, beforeMoney, exchangeRender, hotplaceRender } from '../view/exchange';
 
 const exchangeSection = document.querySelector('.exchange__section');
 

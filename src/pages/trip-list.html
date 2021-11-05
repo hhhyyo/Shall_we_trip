@@ -5,10 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shall We Trip?</title>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/light.css" />
   </head>
   <body>
     <div class="container">
       <h1 class="a11y-hidden">Shall We Trip?</h1>
+      <!-- 공통 메뉴 ---------------------------------------->
+      <nav class="commonMenu">
+        <ul class="commonMenu__listwrap">
+          <li class="commonMenu__list commonMenu__exchange">
+            <a href="/" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-calculator"></i>
+              <p class="commonMenu__text">환율</p>
+            </a>
+          </li>
+          <li class="commonMenu__list commonMenu__trip-list active">
+            <a href="/trip-list" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-book"></i>
+              <p class="commonMenu__text">여행리스트</p>
+            </a>
+          </li>
+          <li class="commonMenu__list">
+            <button class="commonMenu__item add-trip" type="button">
+              <span class="commonMenu__add"></span>
+              <span class="commonMenu__text commonMenu__add--text">여행추가</span>
+            </button>
+          </li>
+          <li class="commonMenu__list commonMenu__chart unimplemented">
+            <a href="#" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-pie-chart-alt-2"></i>
+              <p class="commonMenu__text">통계</p>
+            </a>
+          </li>
+          <li class="commonMenu__list commonMenu__setting" data-page="setting">
+            <button type="button" class="commonMenu__item">
+              <i class="commonMenu__icon bx bx-cog"></i>
+              <p class="commonMenu__text">설정</p>
+            </button>
+          </li>
+        </ul>
+        <ul class="commonMenu__setwrap">
+          <li>
+            <a href="#" class="commonMenu__logout"><i class="commonMenu__logout--icon bx bx-log-out"></i> 로그아웃</a>
+          </li>
+        </ul>
+      </nav>
       <main class="trips-container">
         <h2 class="trips-container__title"><b>효원</b>님의 여행기록</h2>
         <section class="trips-section">
@@ -62,49 +103,45 @@
             </li> -->
           </ul>
         </section>
-        <div class="modal-bg">
+        <div class="modal-bg notransition">
           <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
             <h3 id="modalTitle" class="a11y-hidden">여행 추가</h3>
             <button type="button" class="button button-close-modal" aria-label="모달 닫기" title="모달 닫기">
               <span aria-hidden="true">×</span>
             </button>
-            <form action="" class="modal__form">
+            <form action="" id="tripInfoForm" class="modal__form">
               <fieldset>
                 <legend class="a11y-hidden">여행 정보 입력</legend>
                 <div class="input-wrap">
-                  <label>여행할나라</label>
-                  <input />
+                  <label for="countryInput">여행할나라</label>
+                  <input id="countryInput" name="countryName" placeholder="한글로 입력해주세요." autocomplete="off" />
+                  <p class="input--error"></p>
                 </div>
                 <div class="input-wrap">
-                  <label>제목</label>
-                  <input placeholder="20글자 이내로 입력해주세요." />
-                </div>
-                <div class="input-date">
-                  <div class="input-wrap">
-                    <label>여행시작일</label>
-                    <input type="text" readonly />
-                  </div>
-                  <span>~</span>
-                  <div class="input-wrap">
-                    <label>여행종료일</label>
-                    <input type="text" readonly />
-                  </div>
+                  <label for="titleInput">제목</label>
+                  <input id="titleInput" name="title" placeholder="20글자 이내로 입력해주세요." autocomplete="off" />
+                  <p class="input--error"></p>
                 </div>
                 <div class="input-wrap">
-                  <label>총 예산</label>
+                  <label for="periodInput">여행기간</label>
+                  <input id="periodInput" name="period" readonly />
+                  <p class="input--error"></p>
+                </div>
+                <div class="input-wrap">
+                  <label for="budgetInput">총 예산</label>
                   <div class="input-money">
-                    <input placeholder="원화로 입력해주세요" />
+                    <input id="budgetInput" name="budget" placeholder="원화로 입력해주세요" autocomplete="off" />
                     <span class="input-money__unit">원</span>
                   </div>
-                  <p class="input-wrap__guide">현재 환율로 약 <b>300달러</b> 입니다.</p>
+                  <p class="input-wrap__guide">현재 환율로 약 <b class="basic"></b> 입니다.</p>
+                  <p class="input--error"></p>
                 </div>
               </fieldset>
             </form>
-            <button type="submit" class="button--submit">만들기</button>
+            <button type="submit" class="button--submit" form="tripInfoForm" disabled>만들기</button>
           </div>
         </div>
       </main>
-      <nav>common component 삽입 예정</nav>
     </div>
   </body>
 </html>
