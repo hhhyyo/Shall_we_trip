@@ -1,7 +1,4 @@
 import axios from 'axios';
-<<<<<<< Updated upstream
-import country from '../store/country';
-=======
 import suggestions from './suggestion';
 
 const country = {
@@ -55,7 +52,6 @@ const country = {
   폴란드: ['PLN', '즈워티'],
   헝가리: ['HUF', '포린트'],
 };
->>>>>>> Stashed changes
 
 const beforeCountry = document.querySelector('.exchange__section--before--countryinput');
 const beforeMoney = document.querySelector('.exchange__section--before--moneyinput');
@@ -178,9 +174,6 @@ const hotplaceRender = () => {
   });
 };
 
-<<<<<<< Updated upstream
-export { beforeCountry, beforeMoney, invertExchangeRender, forwardExchangeRender, exchangeRender, hotplaceRender };
-=======
 // 자동완성
 
 export {
@@ -192,4 +185,3 @@ export {
   exchangeRender,
   hotplaceRender,
 };
->>>>>>> Stashed changes
