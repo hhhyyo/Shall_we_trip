@@ -28,20 +28,28 @@ beforeCountry.addEventListener('keyup', e => {
 
   if (userData) {
     emptyArr = suggestions.filter(data => data.match(userData));
-    emptyArr = emptyArr.map(data => `<li>${data}</li>`);
-    searchWrapper.classList.add('active');
-    // showSuggestions(emptyArr);
-    suggBox.innerHTML = emptyArr.join('');
-    [...suggBox.querySelectorAll('li')].forEach(el => {
-      el.addEventListener('click', e => {
-        if (!el === e.target) return;
-        beforeCountry.value = e.target.textContent;
-        searchWrapper.classList.remove('active');
-        exchangeRender();
+    if (emptyArr.length === 0) {
+      suggBox.innerHTML = ``;
+    } else {
+      // active추가
+      suggBox.classList.add('active');
+      emptyArr = emptyArr.map(data => `<li>${data}</li>`);
+      searchWrapper.classList.add('active');
+      // showSuggestions(emptyArr);
+      suggBox.innerHTML = emptyArr.join('');
+      [...suggBox.querySelectorAll('li')].forEach(el => {
+        el.addEventListener('click', e => {
+          if (!el === e.target) return;
+          beforeCountry.value = e.target.textContent;
+          searchWrapper.classList.remove('active');
+          suggBox.classList.remove('active');
+          exchangeRender();
+        });
       });
-    });
+    }
   } else {
     searchWrapper.classList.remove('active');
+    suggBox.classList.remove('active');
   }
   if (e.key === 'Enter') searchWrapper.classList.remove('active');
 });

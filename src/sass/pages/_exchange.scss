@@ -39,10 +39,14 @@
       left: 50%;
       transform: translateX(-50%);
       top: rem(85px);
+      display: none;
       // pointer-events: none;
       @include desktop {
         width: 90%;
         top: rem(90px);
+      }
+      &.active {
+        display: block;
       }
 
       li {
@@ -71,10 +75,11 @@
     &--before.active {
       .exchange__input--autocom-box {
         opacity: 1;
-        padding: rem(6px) rem(6px);
+        // padding: rem(6px) rem(6px);
       }
       .exchange__input--autocom-box li {
         display: block;
+        padding: rem(20px) rem(20px);
       }
     }
 
