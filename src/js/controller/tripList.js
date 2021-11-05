@@ -14,6 +14,7 @@ const $inputWrapGuide = document.querySelector('.input-wrap__guide');
 const $buttonSubmit = document.querySelector('.button--submit');
 
 let budgetExchange = null;
+let budgetOk = false;
 
 const $periodInput = document.getElementById('periodInput');
 
@@ -57,6 +58,8 @@ const validationCheck = e => {
   $inputError.textContent = inputName.validate ? '' : inputName.errorMessage;
 
   if (e.target.name === 'budget') {
+    console.log(budgetOk);
+    if (budgetOk) inputName.validate = true;
     inputName.validate = false;
   }
 
@@ -146,12 +149,27 @@ const getExchangeBudget = async (money, countryInput) => {
     const response = await axios.get(apiURL);
     const exchangeMoney = (money / response.data[0].basePrice).toFixed(2);
     budgetExchange = exchangeMoney;
+    budgetOk = true;
     $inputWrapGuide.innerHTML = `현재 환율로 약 <b>${exchangeMoney}${country[countryInput][1]}</b> 입니다.`;
     $buttonSubmit.disabled = false;
   } catch (error) {
     console.log(error);
   }
 };
+
+$budgetInput.addEventListener('focusout', () => {
+  const money = $budgetInput.value.replace(/[^\d]+/g, '');
+  const countryInput = $countryInput.value;
+
+  if (countryInput && Object.prototype.hasOwnProperty.call(country, countryInput)) {
+    getExchangeBudget(money, countryInput);
+  } else {
+    $budgetInput.value = '';
+    getInputName($budgetInput.name).validate = false;
+    $inputWrapGuide.innerHTML = '여행지 입력을 확인해주세요';
+    $countryInput.focus();
+  }
+});
 
 $budgetInput.addEventListener(
   'input',

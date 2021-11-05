@@ -233,4 +233,32 @@
   &__section--after--moneyinput {
     outline: none;
   }
+
+  .input {
+    &-wrap {
+      margin-bottom: rem(60px);
+
+      &__guide {
+        b {
+          font-weight: 600;
+        }
+      }
+    }
+
+    &--error {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: rem(10px);
+      padding-left: rem(14px);
+      color: $pink;
+      font-weight: 500;
+      font-size: rem(18px);
+
+      &.active {
+        display: block;
+      }
+    }
+  }
 }
