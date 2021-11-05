@@ -183,8 +183,10 @@ html {
       white-space: nowrap;
       border: none;
       background: transparent;
+      font-family: inherit;
 
-      &.add-trip {
+      &.add-trip,
+      &.add-expense {
         display: flex;
         justify-content: center;
       }
