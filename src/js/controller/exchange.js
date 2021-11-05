@@ -4,7 +4,7 @@ import { beforeCountry, beforeMoney, exchangeRender, hotplaceRender } from '../v
 const exchangeSection = document.querySelector('.exchange__section');
 
 // DOMContentLoaded됬을 때 각 나라의 api를 호출해서 뿌려주기.
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', () => {
   exchangeRender();
   hotplaceRender();
 
@@ -14,5 +14,6 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 exchangeSection.addEventListener('change', () => {
   if (!Object.keys(country).includes(beforeCountry.value) && beforeMoney) return;
+  console.log('test');
   exchangeRender();
 });
