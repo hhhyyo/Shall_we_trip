@@ -6,7 +6,7 @@ const auth = require('./middleware/auth');
 
 // express는 함수
 const app = express();
-const PORT = 7000;
+const PORT = 3000;
 
 // 루트 디렉토리 설정
 app.use(express.static('public'));

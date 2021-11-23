@@ -67,6 +67,18 @@ let trips = [
     startDate: '2021-11-03',
     endDate: '2021-11-10',
   },
+  {
+    tripId: 6,
+    userId: 4,
+    country: '미국',
+    title: '가자가자',
+    budget: 2000,
+    cashTotal: 700,
+    cardTotal: 400,
+    currency: '달러',
+    startDate: '2021-11-23',
+    endDate: '2021-11-30',
+  },
 ];
 
 const generateId = () => Math.max(...trips.map(trip => trip.tripId), 0) + 1;

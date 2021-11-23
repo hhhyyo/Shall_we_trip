@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -20,11 +21,14 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     filename: 'js/[name].bundle.js',
   },
+  optimization: {
+    minimizer: [new CssMinimizerPlugin(), '...'],
+  },
   plugins: [
     // 번들링된 JS 파일을 html 파일에 자동 추가해주는 플러그인
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunks: ['index', 'exchange', 'navigation', 'tripList'],
+      chunks: ['index', 'exchange', 'navigation'],
     }),
     new HtmlWebpackPlugin({
       filename: 'signup.html',
@@ -92,12 +96,12 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
     },
     open: true,
-    port: 3000,
+    port: 5500,
     // 별도의 API 백엔드 개발 서버가 있고 동일한 도메인에서 API 요청을 보내려는 경우 일부 URL을 프록시하는 것이 유용할 수 있다.
-    // PORT 7000에는 api 서버가, PORT 3000에는 devServer가 실행중이기에 호스트와 포트를 명시하지 않으면 404에러가 발생한다.
+    // PORT 5500에는 api 서버가, PORT 5500에는 devServer가 실행중이기에 호스트와 포트를 명시하지 않으면 404에러가 발생한다.
     proxy: {
       '/api': {
-        target: 'http://localhost:7000',
+        target: 'http://localhost:3000',
       },
     },
     onListening(devServer) {
@@ -111,5 +115,5 @@ module.exports = {
   },
   // 소스 맵(Source Map)은 디버깅을 위해 번들링된 파일과 번들링되기 이전의 소스 파일을 연결해주는 파일이다.
   devtool: 'source-map',
-  mode: 'development',
+  mode: 'production',
 };

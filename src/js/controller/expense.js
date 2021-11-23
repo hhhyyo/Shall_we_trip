@@ -1,4 +1,4 @@
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import { fetchTripInfo, fetchExpenses, setExpensesFilter, getCurreny, getCountry, addExpense } from '../store/expense';
 import { getNow } from '../utils/helper';
 import { forwardExchangeRender } from '../view/exchange';

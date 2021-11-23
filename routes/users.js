@@ -33,6 +33,14 @@ let users = [
     email: 'barum89@google.com',
     password: '741852963',
   },
+  {
+    userId: 4,
+    userName: '이리',
+    phoneNumber: '01011112222',
+    nickname: '얄얄',
+    email: 'hgri34@naver.com',
+    password: 'asdf1234',
+  },
 ];
 
 const generateId = () => Math.max(...users.map(user => user.userId), 0) + 1;
@@ -54,7 +62,7 @@ router.post('/', (req, res) => {
 router.post('/auth', (req, res) => {
   const { email, password } = req.body;
   const user = [...users].find(user => user.email === email && user.password === password);
-
+  console.log(user);
   if (!user) return res.status(401).send({ error: '입력하신 정보가 올바르지 않습니다.' });
   const { userId, nickname } = user;
 
