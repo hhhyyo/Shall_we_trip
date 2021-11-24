@@ -38,6 +38,11 @@
     padding-top: 55px;
     margin-bottom: rem(28px);
 
+    @media (max-width: 420px) {
+      min-height: 185px;
+      padding-top: 40px;
+    }
+
     &.empty {
       display: none;
       background: #ffffff;
@@ -56,6 +61,10 @@
       height: 100%;
       background-color: rgba($color: $white, $alpha: 0.3);
       padding: 55px 0 60px 50px;
+
+      @media (max-width: 420px) {
+        padding: 40px 0 45px 40px;
+      }
     }
 
     &__title {
